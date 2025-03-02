@@ -1,0 +1,742 @@
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="https://img.hotimg.com/1ef97f5ba533d7bd7.png" type="image/png">
+
+    <title>About Myself Ubaid UR Rehman</title>
+
+    <meta name="google-site-verification" content="azthnYNKg3HDplNjwJN9vymVU-P18dp3iyE3FNFKORc" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7905341714144701"
+
+     crossorigin="anonymous"></script>
+
+    <style>
+
+     .card-container {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            padding: 20px;
+
+        }
+
+        .card {
+
+            text-align: center;
+
+            margin: 10px;
+
+            cursor: pointer;
+
+            transition: transform 0.3s;
+
+        }
+
+        .card:hover {
+
+            transform: scale(1.1);
+
+        }
+
+        .card img {
+
+            width: 100px;
+
+            height: 100px;
+
+            display: block;
+
+            margin: 0 auto;
+
+        }
+
+        .card p {
+
+            margin: 10px 0 0;
+
+            font-size: 16px;
+
+        }
+
+.container {
+
+    background: linear-gradient(15deg, #00FF7F, #1E90FF);
+
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    padding: 20px;
+
+    margin: 20px;
+
+    display: flex;
+
+    align-items: center;
+    overflow-y: auto;
+
+}
+
+        .container img {
+
+            max-width: 150px;
+
+            height: auto;
+
+             box-shadow: 0 5px 7px rgba(0,2000,012,0.9);
+
+            margin-right: 20px;
+            margin-top:-20px;
+
+        }
+
+
+        .container .details {
+
+            max-width: 600px;
+
+        }
+
+     /* Button Base Styles */
+
+.email-button, .whatsapp {    background: linear-gradient(90deg, #4CAF50, #45a049);
+
+    border: none;
+
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+
+    color: white;
+
+    padding: 14px 28px; /* Increased padding for better touch area */
+margin: 10px;
+    font-size: 16px;
+
+    font-weight: bold; /* Make text bold for emphasis */
+
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Added shadow transition */
+
+    display: flex; /* Use flexbox to center icon and text */
+
+    align-items: center; /* Center items vertically */
+
+    justify-content: center; /* Center items horizontally */
+
+    text-decoration: none; /* Remove underline for anchor tags */
+
+}
+
+.Linkedin, .Youtube, .CV {
+    position: relative; /* Needed for positioning */
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    border: none;
+    border-radius: 8px; /* Slightly larger radius for a softer look */
+    color: white;
+    padding: 14px 28px; /* Increased padding for better touch area */
+    font-size: 16px;
+    font-weight: bold; /* Make text bold for emphasis */
+    display: flex; /* Use flexbox to center icon and text */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    text-decoration: none;
+    margin: 10px; /* Add some margin between buttons */
+    overflow: hidden; /* Hide the overflow */
+}
+.CV{
+
+    background:Blue;
+        }
+
+.Linkedin::before, .Youtube::before, .CV::before {
+    content: '';
+    position: absolute;
+    width: 150%; /* Extend width for inclination */
+    height: 4px; /* Thickness of the line */
+    background: rgba(255, 255, 255, 0.6); /* Transparent white line */
+    top: 50%; /* Center vertically */
+    left: -25%; /* Start from the left */
+    transform: translateY(-50%) rotate(-30deg); /* Inclined angle */
+    animation: slide 2s linear infinite; /* Animation for sliding effect */
+}
+
+@keyframes slide {
+    0% {
+        left: -100%; /* Start position */
+    }
+    100% {
+        left: 100%; /* End position */
+    }
+}
+
+
+
+.container-space {
+            margin-bottom: 100px;
+        }
+
+
+
+/* Adding Icon Styles */
+
+.email-button i, .whatsapp i, .Linkedin i, .Youtube i {
+
+    margin-right: 8px; /* Space between icon and text */
+
+}
+
+
+
+/* Hover Effects */
+
+.email-button:hover, .whatsapp:hover, .Linkedin:hover, .Youtube:hover {
+
+    background: linear-gradient(90deg, #45a049, #4CAF50);
+
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+
+}
+
+        .popup {
+
+            display: none;
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 80%;
+
+            height: 80%;
+
+            background: white;
+
+            border: 2px solid #ccc;
+
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+            z-index: 1000;
+
+            overflow: hidden;
+
+        }
+
+        .popup iframe {
+
+            width: 100%;
+
+            height: calc(100% - 30px);
+
+        }
+
+        .popup .close {
+
+            position: absolute;
+
+            top: 0;
+
+            right: 0;
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            background: #ccc;
+
+            border: none;
+
+            font-size: 20px;
+
+        }
+
+        .popup .close:hover {
+
+            background: #bbb;
+
+        }
+
+        .button2, .button3 {
+
+            padding: 10px 20px;
+
+        }
+
+        * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+    }
+
+
+
+    .header {
+
+    background-color: #1E1E1E;
+
+    color: #FFFFFF;
+
+    padding: 20px 40px;
+
+    border-bottom: 2px solid #4CAF50;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+
+}
+
+
+
+
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      font-size: 24px;
+
+      font-weight: bold;
+
+      animation: slideIn 2s ease-out;
+
+    }
+
+
+
+    .logo img {
+
+      width: 40px;
+
+      height: 40px;
+
+      margin-right: 10px;
+
+      animation: logoAnimation 2s ease-in-out;
+
+    }
+
+
+
+    .nav-menu ul {
+
+      display: flex;
+
+      list-style: none;
+
+    }
+
+
+
+    .nav-menu ul li {
+
+      margin-left: 20px;
+
+    }
+
+
+
+    .nav-menu ul li a {
+
+      color: white;
+
+      text-decoration: none;
+
+      transition: color 0.3s;
+
+    }
+
+
+
+    .nav-menu ul li a:hover {
+
+      color: #f4a261;
+
+    }
+
+
+
+    .menu-icon {
+
+      display: none;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+    }
+
+
+
+    @keyframes slideIn {
+
+      from {
+
+        opacity: 0;
+
+        transform: translateY(-50%);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+      }
+
+    }
+
+
+
+    @keyframes logoAnimation {
+
+      from {
+
+        opacity: 0;
+
+        transform: scale(0.5);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+      }
+
+    }
+
+
+
+    /* Mobile view */
+
+    @media (max-width: 768px) {
+
+      .nav-menu ul {
+
+        display: none;
+
+        flex-direction: column;
+
+      }
+
+
+
+      .menu-icon {
+
+        display: block;
+
+      }
+
+    }
+
+         .text-container {
+
+            padding-left: 20px;
+
+            padding-right: 20px;
+
+            background-color: #ffffff; /* White background */
+
+            border-radius: 10px; /* Rounded corners */
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+
+            margin: 20px 0; /* Margin above and below */
+overflow-y: auto; /* Maximum width */
+
+            text-align: center; /* Center text */
+             width:100%;
+
+        }
+
+
+
+        .text-container p {
+
+            color: #333; /* Dark text color */
+
+            font-size: 18px; /* Larger text size */
+
+            line-height: 1.6; /* Better line spacing */
+ text-align: justify; 
+            margin: 10px 0; /* Margin for spacing between paragraphs */
+
+        }
+
+                 h2 {
+
+            background: linear-gradient(90deg, #4CAF50, #45a049); /* Gradient header */
+
+            color: white;
+
+            padding: 15px; /* Padding around the heading */
+
+            border-radius: 8px; /* Rounded corners */
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+            width: 100%; /* Full width */
+
+            text-align: center; /* Center the text */
+
+            margin-bottom: 20px; /* Space below the header */ 
+
+         }
+
+                     h3 {
+
+            background-color: red; /* Green header bar */
+
+            color: white;
+
+                                     padding: 10px;  
+
+                     }
+h4{
+     text-align: justify; 
+}
+  .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto; /* Push footer to the bottom */
+    }
+
+    .footer a {
+      color: #f4a261;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+        
+    </style>
+
+<body>
+
+    <header class="header">
+
+    <div class="logo">
+
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+
+      CEO UR Frequency
+
+    </div>
+
+    </header>
+
+
+
+     <div class="container">
+
+        <img src="https://i.pinimg.com/736x/42/7d/92/427d92a4cd0a4604a44c7febe78e6bef.jpg" alt="CEO.png" border="0" />
+
+        <div class="details">
+
+<h1>Laiba Momal</h1>
+
+<p>CEO at UR Frequency, Student of BS Physics, A researcher and space engineer </p>
+
+ <a href="mailto:ceo@urfrequency.site" class="email-button">Email Me</a>
+
+<a href="https://www.linkedin.com/in/laiba-momal-4aa891339/" target="_blank" class="btn Linkedin">Linkedin</a>
+
+
+
+</div>
+
+
+</div>
+
+    <div class="text-container">
+
+<h2>About (Laiba Momal):</h2>
+
+<p>Recently earned her Bchelor's degree in Physics, where she developed a strong foundation in scientific principles and analytical thinking. Her academic journey also allowed her to explore engineering concepts</p>
+
+<h3>Education:</h3>
+<p>
+    
+    BS PHYSICS Punjab university Lahore, Affiliated collage, Islamiya Graduate Collage Gujranwala
+    
+    
+</p>
+
+<p>
+    FSC PRE ENGINEERING Board of Intermediate and Secondary Education Gujranwala
+</p>
+
+<p>
+    MATRICULATION Board of Intermediate and Secondary Education Gujranwala
+</p>
+
+</div>
+
+<p>more are comming</p>
+<h3> Space Projects</h3>
+<p>Laiba Momal was the 1st that worked with Ubaid UR Rehman in projects like Spin Launch (That was Failed), Analysis on Trbine blades of Jet engine and helping in maths and calculations of Satellietes and Orbits. Such a brillent mind in space science.  </p>
+
+   
+<h3>Skills</h3>
+
+    <p>Analytycal and Research Matlab AutoCAD Microsoft Office package: Microsoft Word, Excel, PowerPoint, Access Graphics Design C++ Social media Teaching and Python
+</p>
+
+<h3>Software Expertise</h3>
+
+<p> 
+Auto CAD, EXCEL, PowerPoint, Matlab, C Lion, Python IDE and CANVA
+
+</p>
+
+
+    <div class="popup" id="popup2">
+
+        <button class="close" onclick="closePopup('popup2')">×</button>
+
+        <iframe src="https://drive.google.com/file/d/1ni9g-ytGrpg6PKQ6JPsBCs1rMRWiaYil/preview" frameborder="0"></iframe>
+
+    </div>
+
+
+    <div class="container-space"></div>
+<h2>Her Contribution with UR Frequency</h2>
+
+ <div class="card-container">
+
+        <div class="card" onclick="window.open('https://urmathematician.github.io/ur_frequency/', '_blank')">
+
+            <img src="https://img.hotimg.com/Space-logo.png" alt="Space-logo.png" alt="UR-Frequency-Old-Logo" alt="Icon 1">
+
+            <p>UR Frequency</p>
+
+        </div>
+
+
+
+        <div class="card" onclick="window.open('https://urmathematician.github.io/urfrequency_celestial/', '_blank')">
+
+            <img src="https://i.pinimg.com/564x/3c/d4/f6/3cd4f6370b37481c6d996b6c1b53c07a.jpg" alt="Icon 2">
+
+            <p>Celestial Data</p>
+
+        </div>
+
+
+
+        <div class="card" onclick="window.open('https://urmathematician.github.io/urstore/', '_blank')">
+
+            <img src="https://i.pinimg.com/564x/c4/e3/59/c4e3595d852cc9c9a123161a4eb80a5a.jpg" alt="Icon 3">
+
+            <p>UR app Store</p>
+
+        </div>
+
+
+
+        <div class="card" onclick="window.open('https://urmathematician.github.io/urtv/', '_blank')">
+
+            <img src="https://i.pinimg.com/736x/11/07/dc/1107dcb96326f62483b718b0354c966e.jpg" alt="Icon 4">
+
+            <p>UR Animations</p>
+
+   </div>
+   </div>   </div>   </div>
+</body>
+
+<script> 
+
+    document.querySelector('.menu-icon').addEventListener('click', () => {
+
+      const navMenu = document.querySelector('.nav-menu ul');
+
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+
+    });
+
+ function openPopup(id) {
+
+            document.getElementById(id).style.display = 'block';
+
+        }
+
+
+
+        function closePopup(id) {
+
+            document.getElementById(id).style.display = 'none';
+
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            var coll = document.getElementsByClassName("collapsible");
+
+            for (var i = 0; i < coll.length; i++) {
+
+                coll[i].addEventListener("click", function() {
+
+                    this.classList.toggle("active");
+
+                    var content = this.nextElementSibling;
+
+                    if (content.style.display === "block") {
+
+                        content.style.display = "none";
+
+                    } else {
+
+                        content.style.display = "block";
+
+                    }
+
+                });
+
+            }
+
+        });
+
+
+
+</script>
+      <footer class="footer">
+    <p>&copy; 2024 UR Frequency. All rights reserved.</p>
+    <p>Its profile of CEO</p>
+    </p>
+  </footer>
+</html>

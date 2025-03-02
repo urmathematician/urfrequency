@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streaming with OBS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #live-feed {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  video {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #00C853;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background-color: #388E3C;
+  }
+</style>
+
+<body>
+    <h1>Live Stream your Telescope</h1>
+    <div id="live-feed">
+        <video id="localVideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+    </div>
+
+    <button id="goLiveButton">Go Live</button>
+
+    <p>Stream Key: <span id="streamKey">Loading...</span></p>
+
+    <script src="script.js"></script>
+</body>
+</html>

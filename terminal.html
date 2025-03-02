@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://i.pinimg.com/736x/72/31/6c/72316c2c42f1bd7fae53246e871d7de6.jpg" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Terminal</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .terminal {
+            width: 100%;
+            height: 80vh;
+            overflow-y: scroll;
+        }
+        input {
+            background-color: black;
+            color: #00FF00;
+            border: none;
+            outline: none;
+            font-family: monospace;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal"></div>
+    <input type="text" id="command" placeholder="Enter command..." autofocus onkeydown="executeCommand(event)">
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const commandInput = document.getElementById('command');
+
+        const redirect = (url) => {
+            terminal.innerHTML += `<div>Redirecting to: <a href="${url}" target="_blank">${url}</a></div>`;
+        };
+
+        const promptUser = (message, callback) => {
+            terminal.innerHTML += `<div>${message}</div>`;
+            commandInput.value = '';
+            commandInput.focus();
+            commandInput.onkeydown = (e) => {
+                if (e.key === 'Enter') {
+                    callback(commandInput.value);
+                }
+            };
+        };
+
+        const executeCommand = (event) => {
+            if (event.key === 'Enter') {
+                const command = commandInput.value.trim().toLowerCase();
+                terminal.innerHTML += `<div>$ ${command}</div>`;
+                commandInput.value = '';
+                
+                if (command === 'sudo su') {
+                    redirect('#'); // Admin page redirect, link not created yet
+                } else if (command === 'toons') {
+                    redirect('http://urmathematician.github.io/urtv');
+                } else if (command === 'ur frequency') {
+                    redirect('http://www.urfrequency.site');
+                } else if (command === 'ubaid') {
+                    redirect('http://urmathematician.github.io/ubaid');
+                } else if (command === 'exit') {
+                    redirect('http://www.urfrequency.site');
+                } else if (command === 'live sky') {
+                    redirect('');
+                } else if (command === 'calculator') {
+                    terminal.innerHTML += `<div>Calculator mode activated. Enter expressions:</div>`;
+                    commandInput.onkeydown = (e) => {
+                        if (e.key === 'Enter') {
+                            try {
+                                let expression = commandInput.value;
+                                let result = eval(expression.replace(/sin|cos|tan|log/g, 'Math.$&'));
+                                terminal.innerHTML += `<div>$ ${expression}</div><div>= ${result}</div>`;
+                            } catch {
+                                terminal.innerHTML += `<div>Invalid expression.</div>`;
+                            }
+                            commandInput.value = '';
+                        }
+                    };
+                } else if (command === 'game') {
+                    redirect('https://supermarioplay.com/');
+                } else if (command === 'moon') {
+                    redirect('https://urmathematician.github.io/urfrequency_celestial/');
+                } else if (command === 'video') {
+                    redirect('#'); // Link not generated yet
+                } else if (command === 'satellite') {
+                    promptUser('Enter your name:', (name) => {
+                        const validNames = ['Ubaid', 'Laiba', 'Asad', 'Haseeb', 'Shahid'];
+                        if (validNames.includes(name)) {
+                            promptUser('Enter password:', (password) => {
+                                if (password === '001025') {
+                                    promptUser('Choose a topic: (Mechanical, Electrical, Embed, Network, IT, Physics, Chemistry, Biology, FEA, Thermodynamics, Mechanics of Materials, Control, PLC, CNC, Statics + Dynamics, IC engines, Fluid Mechanics, Calculus, Analytical geometry, Matrix, Statistics, Differential eq, Numerical analysis, Complex Maths)', (topic) => {
+                                        const validTopics = ['Mechanical', 'Electrical', 'Embed', 'Network', 'IT', 'Physics', 'Chemistry', 'Biology', 'FEA', 'Thermodynamics', 'Mechanics of Materials', 'Control', 'PLC', 'CNC', 'Statics + Dynamics', 'IC engines', 'Fluid Mechanics', 'Calculus', 'Analytical geometry', 'Matrix', 'Statistics', 'Differential eq', 'Numerical analysis', 'Complex Maths'];
+                                        if (validTopics.includes(topic)) {
+                                            terminal.innerHTML += `<div>Creating blank for: ${topic}</div>`;
+                                        } else {
+                                            terminal.innerHTML += `<div>Invalid topic selected.</div>`;
+                                        }
+                                    });
+                                } else {
+                                    terminal.innerHTML += `<div>Incorrect password.</div>`;
+                                }
+                            });
+                        } else {
+                            terminal.innerHTML += `<div>Invalid name.</div>`;
+                        }
+                    });
+                } else if (command === 'clear') {
+                    terminal.innerHTML = ''; // Clears the terminal
+                } else {
+                    terminal.innerHTML += `<div>Command not recognized.</div>`;
+                }
+
+                terminal.scrollTop = terminal.scrollHeight; // Scroll to bottom
+            }
+        };
+    </script>
+</body>
+</html>

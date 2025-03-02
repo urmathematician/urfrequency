@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at UR Frequency</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
+background: url('https://i.pinimg.com/736x/4a/88/e3/4a88e3bf1fa8455e87765c8b3724e2e8.jpg') no-repeat center center fixed;
+           
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        @keyframes starsTwinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: starsTwinkle 2s infinite alternate;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .content {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 30px auto;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .jobs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+        }
+
+        .job-card h3 {
+            margin-top: 0;
+            color: #FFD700;
+        }
+
+        .job-card p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        
+         .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:#333;
+      color: #fff;
+      position: relative;
+      z-index: 3; /* Ensure header stays on top */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      animation: slideIn 2s ease-out;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 60px; /* Adjust based on header height */
+      left: 0;
+      background-color: #333;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      z-index: 3; /* Ensure the navigation menu appears above the container */
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      flex-direction: column; /* Stack items vertically */
+      padding: 10px 20px;
+    }
+
+    .nav-menu ul li {
+      margin: 10px 0; /* Space between items */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-100%); /* Start from left */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .nav-menu.open {
+      max-height: 300px; /* Increased height for more items */
+    }
+
+    .nav-menu.open ul li {
+      opacity: 1; /* Fade in */
+      transform: translateX(0); /* Slide in */
+    }
+
+    .nav-menu ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-menu ul li a:hover {
+      color: #f4a261;
+    }
+
+    
+    .menu-icon {
+    display: block; /* Ensure it is block for smaller screens */
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Make sure it's visible on a dark background */
+    z-index: 4; /* Ensure it's on top of other elements */
+}
+
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes logoAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+   .card {
+    text-align: center;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.card p {
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+      
+    
+    </style>
+</head>
+<body>
+      <header class="header">
+      
+    <div class="logo">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+      UR Frequency
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="https://urmathematician.github.io/ur_frequency/">Home</a></li>
+        <li><a href="">UR Industries</a></li>
+        <li><a href="https://urmathematician.github.io/urstore/">UR Store</a></li>
+                <li><a href="https://urmathematician.github.io/ur_frequency/carriers">Internships and Carrires</a></li>
+        <li><a href="https://urmathematician.github.io/urtv/new">UR Automation </a></li>
+        <li><a href="https://urmathematician.github.io/ur_frequency/team">Our Team</a></li>
+        
+        <li><a href="https://urmathematician.github.io/ur_frequency/contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="menu-icon">&#9776;</div>
+  </header>
+  
+    
+    <header>
+<img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo.png" style="height: 100px; display: block; margin-left: auto; margin-right: auto; margin-top: -45px;" />
+
+        <h1>Join the Team at UR Frequency</h1>
+        <p>Your journey into the universe starts here. Explore opportunities to shape the future.</p>
+        <p>Unpaid JOBS now</p>
+    </header>
+    
+    <div class="content">
+        <h2>Current Openings</h2>
+        <div class="jobs">
+            <div class="job-card">
+                <h3>Camera telescope</h3>
+                <p>We are making another plateform that we can share live video of sky from different regions of the world. So that you can share your camera to whole world</p>
+            </div>
+            <div class="job-card">
+                <h3>Researchers</h3>
+                <p>We need researchers to do research on their own topics and we'll publish their research here, keep in mind your research is safe here.</p>
+            </div>
+        </div>
+    </div>
+ <div class="card" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7bA9N3GcB6scTONfafSHs-jaXPZ9owvgUgxrv4rVQ3EqJew/viewform?usp=sf_link')">
+        <img src="https://i.pinimg.com/564x/26/65/95/2665953169b28e847eefb65f48341cf9.jpg" alt="RP">
+        <p>Join US</p>
+        </div>
+        </div>
+
+   </div>
+    <footer>
+        <p>For inquiries, contact us at <a href="mailto:hr@urfrequency.site">hr@urfrequency.site</a></p>
+        <p>&copy; 2024 UR Frequency. All rights reserved.</p>
+    </footer>
+</body>
+
+<script>
+    
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('open');
+});
+
+    
+</script>
+</html>
+
