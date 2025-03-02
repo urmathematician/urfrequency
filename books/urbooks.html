@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Frequency Books</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<style>
+body{
+background-color:black;
+}
+     .title-bar {
+            background: linear-gradient(to right, #0f0, #006400);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:#333;
+      color: #fff;
+      position: relative;
+      z-index: 3; /* Ensure header stays on top */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      animation: slideIn 2s ease-out;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 60px; /* Adjust based on header height */
+      left: 0;
+      background-color: #333;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      z-index: 3; /* Ensure the navigation menu appears above the container */
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      flex-direction: column; /* Stack items vertically */
+      padding: 10px 20px;
+    }
+
+    .nav-menu ul li {
+      margin: 10px 0; /* Space between items */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-100%); /* Start from left */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .nav-menu.open {
+      max-height: 300px; /* Increased height for more items */
+    }
+
+    .nav-menu.open ul li {
+      opacity: 1; /* Fade in */
+      transform: translateX(0); /* Slide in */
+    }
+
+    .nav-menu ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-menu ul li a:hover {
+      color: #f4a261;
+    }
+
+    
+    .menu-icon {
+    display: block; /* Ensure it is block for smaller screens */
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Make sure it's visible on a dark background */
+    z-index: 4; /* Ensure it's on top of other elements */
+}
+
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes logoAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto; /* Push footer to the bottom */
+    }
+
+    .footer a {
+      color: #f4a261;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+        .container {
+            max-width: 80%;
+            margin: auto;
+            color:black;
+        }
+        .book-card {
+            transition: transform 0.3s ease-in-out;
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #00ff00;
+            background-color:black;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+            background: #00ff00;
+            color: black;
+        }
+    
+</style>
+
+<body class="bg-gray-100 min-h-screen">
+    <header class="header">
+      
+    <div class="logo">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+      UR Frequency
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="https://www.urfrequency.site">Home</a></li>
+        <li><a href="https://www.urfrequency.site/carriers">Internships and Carrires</a></li>
+        
+        <li><a href="https://www.urfrequency.site/deg">Online degree and Certificates</a></li>
+                <li><a href="https://www.urfrequency.site/sat">UR Statellite Communications</a></li>
+        <li><a href="https://urmathematician.github.io/urstore/">UR Store</a></li>
+
+        <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
+
+      </ul>
+    </nav>
+    <div class="menu-icon">&#9776;</div>
+  </header>
+
+    <!-- Header Bar -->
+    <header class="bg-green-600 text-white p-4 text-center text-xl font-bold shadow-md">
+        UR Frequency - Books
+    </header>
+    
+    <!-- Header Text -->
+    <div class="text-center mt-6">
+        <h1 class="text-3xl font-semibold text-gray-800">Ubaid UR Rehman books </h1>
+        <p class="text-gray-600 mt-2">The Books written by UR-Mathematician (Ubaid UR Rehman). Uploading soon</p>
+    </div>
+    
+    <!-- Title Bar -->
+    <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 mx-6 rounded-lg shadow-md">
+        Mechanics
+    </div>
+    
+    <!-- Books Container -->
+    <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://drive.google.com/file//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/96/bb/06/96bb06aebad501db02f157f56f46a724.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Introduction to Mechanics </p>
+                </a>
+            </div>
+            
+      
+        </div>
+        </div>
+    </div>
+    
+    <!-- Additional Categories -->
+    <div class="max-w-6xl w-full mx-auto">
+        <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 rounded-lg shadow-md">Space</div>
+        
+    <!-- Books Container -->
+    <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://drive.google.com/file/d/ /preview  ">
+                    <img src="https://i.pinimg.com/736x/95/1a/30/951a30904e76a6abf76b246a9d3a94b5.jpg"class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Introduction to Universe and multiverse (The Book  of UR chapter 7)</p>
+                </a>
+            </div>
+                        <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/4a/3f/64/4a3f644cbc315b5108da31bbb63b013b.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Black Holes and Wormhole (Chapter 9 The Book of UR) </p>
+                </a>
+                </div>
+                 <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/31/bc/83/31bc836569a4191d12cdb5439bf9fa13.jpg"class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">  Aliens (chapter 10, The Book of UR)</p>
+                </a>
+            </div>
+                 <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/00/ee/7a/00ee7a6eb120318347b39e217bd235a1.jpg"class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium"> The Celestial Mechanics (Chapter 7, The  Book of UR)</p>
+                </a>
+            </div>
+                 <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/78/f7/ad/78f7ad189a489d1e25e653a2b2bd628a.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">A Journey Beyond the Multiverse</p>
+                </a>
+            </div>
+                 
+            
+            </div>            
+        </div>
+        </div>
+        
+    <!-- Title Bar -->
+    <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 mx-6 rounded-lg shadow-md">
+        Linux
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/34/b1/e7/34b1e7db8bffdcc0cf7424f654b97fd0.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Linux Cammads</p>
+                </a>
+            </div>
+             </div>
+      
+    <!-- Books Container -->
+    <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/07/3b/48/073b48b572a6b86b7d0a0ae2f3e1636e.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Linux Ubuntu, webserver and Better experince apps</p>
+                </a>
+            </div>
+            
+      
+        </div>
+        </div>
+        <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 rounded-lg shadow-md">Mathematics</div>
+         <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+         <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/33/82/82/338282ca00c4c79395721de55eebf18b.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Easy Basic Calculus</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsW0O5ULjuF0Xi2JY8Fs2eOhzZFEGTBckhA&s" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium"> Vectors and Tensors</p>
+                </a>
+            </div><div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/ae/31/67/ae31676300998e0a73276c7854f5f84a.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Analytical Geomtery</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/04/42/4b/04424b8633b0e97ab72973381dc0b836.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Numarical Analysis</p>
+                </a>
+            </div>
+                
+            </div>            
+        </div>
+        
+        <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 rounded-lg shadow-md">Programming</div>
+                <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/1U6Wn5b-p4FWAass9Ftq91H6EuJfpFTL-/preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/65/a2/46/65a2460a242975f70b6c58d2eb9c2134.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Introduction to Python</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/1hVhTzJWd5ZBukaDq99w8AXQDq3e1i41r/preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/9c/e2/e6/9ce2e63d4ee361e233734d6d16ea6fda.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Matlab Book</p>
+                </a>
+            </div>
+             <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/63/18/1c/63181ca0ab32395f439a998da81b9176.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Arduino Coding only Book</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/6e/46/e7/6e46e7dbe2bb73dacc055e5dbd85c3ad.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">C++ beginner Book</p>
+                </a>
+            </div>
+                
+            </div>            
+        </div>
+        
+           
+                   
+        </div>
+        <div class="bg-gradient-to-r from-green-500 to-black text-white text-lg font-semibold text-center p-3 mt-6 rounded-lg shadow-md">Automation and Space</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/. /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/68/43/4e/68434e4ea3a76a0da0a6fbf5159f286e.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Simple Robotics using Arduino</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d/ /preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/b7/0e/46/b70e46fc9cb4e72be564933e2e66e6dc.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Drones</p>
+                </a>
+            </div>
+                        <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/96/6b/e0/966be0477ca14b2e5c337bff7579da0f.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">CNC,(Make a simple CNC and Learn G-coding)</p>
+                </a>
+            </div>
+                        <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/dc/86/19/dc861914b76a23853d5ace7f7997f02a.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">PLC (simulator and Laddaer Logic)</p>
+                </a>
+            </div>
+                   <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/59/3e/d2/593ed24b756ec62002e7d694deea60a5.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Arduino Based Sattelite</p>
+                </a>
+            </div>
+                   <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/4a/af/38/4aaf38f99d522bf760bf7d0370ab8daa.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Node MCU and ESP-32</p>
+                </a>
+            </div>
+                   <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/d3/6d/e4/d36de4af144cae626b07fd64d8c50d4c.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">resbary pi</p>
+                </a>
+            </div>
+                
+                   <div class="p-4 border rounded-lg shadow-md">
+ <a href="https://drive.google.com/file/d//preview" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/af/92/23/af922301a9852a463fc1071aef849963.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Embed engineenring (introduction) </p>
+                </a>
+            </div>
+            </div>            
+        </div>
+    </div>
+</body>
+<script>
+
+   
+document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('open');
+});
+
+
+  </script>
+
+
+<script type="text/javascript">
+    aclib.runAutoTag({
+        zoneId: 'hg6z0e3eso',
+    });
+</script>
+
+
+<footer class="footer">
+    <p>&copy; 2024 UR Frequency. All rights reserved. </p>
+
+    </p>
+  </footer>
+</html>
