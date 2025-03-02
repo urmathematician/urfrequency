@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Frquency Lessons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<style>
+body{
+background-color:black;
+}
+     .title-bar {
+            background: linear-gradient(to right, #0f0, #006400);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:#333;
+      color: #fff;
+      position: relative;
+      z-index: 3; /* Ensure header stays on top */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      animation: slideIn 2s ease-out;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 60px; /* Adjust based on header height */
+      left: 0;
+      background-color: #333;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      z-index: 3; /* Ensure the navigation menu appears above the container */
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      flex-direction: column; /* Stack items vertically */
+      padding: 10px 20px;
+    }
+
+    .nav-menu ul li {
+      margin: 10px 0; /* Space between items */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-100%); /* Start from left */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .nav-menu.open {
+      max-height: 300px; /* Increased height for more items */
+    }
+
+    .nav-menu.open ul li {
+      opacity: 1; /* Fade in */
+      transform: translateX(0); /* Slide in */
+    }
+
+    .nav-menu ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-menu ul li a:hover {
+      color: #f4a261;
+    }
+
+    
+    .menu-icon {
+    display: block; /* Ensure it is block for smaller screens */
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Make sure it's visible on a dark background */
+    z-index: 4; /* Ensure it's on top of other elements */
+}
+
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes logoAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto; /* Push footer to the bottom */
+    }
+
+    .footer a {
+      color: #f4a261;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+        .container {
+            max-width: 80%;
+            margin: auto;
+            color:black;
+        }
+        .book-card {
+            transition: transform 0.3s ease-in-out;
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #00ff00;
+            background-color:black;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+            background: #00ff00;
+            color: black;
+        }
+    
+</style>
+
+<body class="bg-gray-100 min-h-screen">
+    <header class="header">
+      
+    <div class="logo">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+      UR Frequency
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="https://www.urfrequency.site">Home</a></li>
+        <li><a href="https://www.urfrequency.site/carriers">Internships and Carrires</a></li>
+        
+        <li><a href="https://www.urfrequency.site/deg">Online degree and Certificates</a></li>
+                <li><a href="https://www.urfrequency.site/sat">UR Statellite Communications</a></li>
+        <li><a href="https://urmathematician.github.io/urstore/">UR Store</a></li>
+
+        <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
+
+      </ul>
+    </nav>
+    <div class="menu-icon">&#9776;</div>
+  </header>
+
+    <!-- Header Bar -->
+    <header class="bg-green-600 text-white p-4 text-center text-xl font-bold shadow-md">
+        UR Frequency - Blogs and Lessons
+    </header>
+    
+    <!-- Header Text -->
+    <div class="text-center mt-6">
+        <h1 class="text-3xl font-semibold text-gray-800">Free Lessons</h1>
+        <p class="text-gray-600 mt-2">Get knowladge about universe. Active (universe and multiverse), coding in progress (Aliens), while others comming soon</p>
+    </div>
+    
+    <!-- Title Bar -->
+   
+    
+    <!-- Books Container -->
+    <div class="flex justify-center mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-lg max-w-6xl w-full text-center">
+            <!-- Book 1 -->
+             <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://www.urfrequency.site/lessons/universe  " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/5c/82/49/5c8249fce6d47686035f7d146c161b69.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Universe and Multiverse</p>
+                </a>
+            </div>
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="    https://www.urfrequency.site/lessons/   " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/3d/9d/4d/3d9d4d1432b102ec62250249500629cc.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Celestial mechanics</p>
+                </a>
+            </div>
+            
+            <!-- Book 2 -->
+            <div class="p-4 border rounded-lg shadow-md">
+                <a href="https://www.urfrequency.site/lessons/aliens" class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/bc/1b/b7/bc1bb702dc66866c1b09a652c7b20099.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Aliens</p>
+                </a>
+            </div>
+                        <div class="p-4 border rounded-lg shadow-md">
+                <a href="    https://www.urfrequency.site/lessons/   " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/69/de/36/69de364d0cf3c04941aae1db57490391.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Black Holes</p>
+                </a>
+            </div>
+             <div class="p-4 border rounded-lg shadow-md">
+                <a href="      https://www.urfrequency.site/lessons/  " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/56/ce/80/56ce80fdaebc56c11d8139f83d6fb392.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Embed Space and computers</p>
+                </a>
+            </div>
+             <div class="p-4 border rounded-lg shadow-md">
+                <a href="     https://www.urfrequency.site/lessons/     " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/b5/7a/1e/b57a1eef9046ac08ea757773d84a9ae6.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">All videos of Installation of engineering softwares</p>
+                </a>
+            </div>
+             <div class="p-4 border rounded-lg shadow-md">
+                <a href="     https://www.urfrequency.site/lessons/     " class="block overflow-hidden rounded-lg">
+                    <img src="https://i.pinimg.com/736x/0d/45/57/0d4557748e05b979ed03c6160d51f838.jpg" class="w-full h-48 object-cover rounded-md">
+                    <p class="mt-4 text-gray-700 text-lg font-medium">Research Paper writting</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    
+   </body>
+<script>
+
+   
+document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('open');
+});
+
+
+  </script>
+<footer class="footer">
+    <p>&copy; 2023 UR Frequency. All rights reserved. </p>
+
+    </p>
+  </footer>
+</html>
