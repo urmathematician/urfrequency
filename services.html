@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Frequency services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+     /* Fixed White Header */
+
+        /* Ensure content is not hidden behind fixed header */
+        body {
+            background: white;
+
+        }
+.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:green;
+      color: #fff;
+      position: relative;
+      z-index: 3; /* Ensure header stays on top */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      animation: slideIn 2s ease-out;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 60px; /* Adjust based on header height */
+      left: 0;
+      background-color: #333;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      z-index: 3; /* Ensure the navigation menu appears above the container */
+    }
+
+    .nav-menu ul {
+      display: flex;
+      list-style: none;
+      flex-direction: column; /* Stack items vertically */
+      padding: 10px 20px;
+    }
+
+    .nav-menu ul li {
+      margin: 10px 0; /* Space between items */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-100%); /* Start from left */
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .nav-menu.open {
+      max-height: 300px; /* Increased height for more items */
+    }
+
+    .nav-menu.open ul li {
+      opacity: 1; /* Fade in */
+      transform: translateX(0); /* Slide in */
+    }
+
+    .nav-menu ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-menu ul li a:hover {
+      color: #f4a261;
+    }
+
+    
+    .menu-icon {
+    display: block; /* Ensure it is block for smaller screens */
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Make sure it's visible on a dark background */
+    z-index: 4; /* Ensure it's on top of other elements */
+}
+
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes logoAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+        /* Section Styling */
+section {
+    min-height: 100vh; /* Allows content to expand without breaking layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures content doesn't overflow */
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    /* Optional: Rounded corners */
+    padding: 20px; /* Ensures content doesn't touch the border */
+    width: 100%; /* Ensures it takes the full width */
+    box-sizing: border-box; /* Prevents padding from increasing width */
+}
+
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #contact{
+       color:white;
+            background: url('https://images.pexels.com/photos/73910/mars-mars-rover-space-travel-robot-73910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;     
+        }
+         #contact{
+       color:white;
+            background: url('https://images.pexels.com/photos/73910/mars-mars-rover-space-travel-robot-73910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;     
+        }
+         #team{
+       color:white;
+            background: url('https://images.pexels.com/photos/5258152/pexels-photo-5258152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;     
+        }
+                 #join{
+       color:white;
+            background: url('https://images.pexels.com/photos/41953/earth-blue-planet-globe-planet-41953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;     
+        }
+#home {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px); /* Adjusting for the header height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Background Image Styling */
+#home img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the section without distortion */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Dark Overlay for Better Readability */
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 0;
+}
+.home-content {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Heading */
+.home-content h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+/* Paragraph */
+.home-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.home-content .btn {
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.home-content .btn:hover {
+    background: black;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-content {
+        width: 100%;
+        padding: 20px;
+    }
+}
+/* Text and Button Styling */
+.home-content {
+    position: relative;
+    color: white;
+    z-index: 1;
+}
+
+.home-content h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.home-content .btn {
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.home-content .btn:hover {
+    background: black;
+}
+
+        /* Green Button Styling */
+        .btn {
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 40px;
+            color: ;
+            margin-bottom: 20px;
+        }
+            h3 {
+            font-size: 50px;
+            color: ;
+            margin-bottom: 20px;
+        }
+h1 {
+    font-size: 25px;
+    color: black;
+    margin-bottom: 0px;
+    text-align: left;
+}
+p {
+    font-size: 15px;
+    font-weight: normal; /* Ensures text is not bold */
+}
+    
+        .container1 {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .container2 {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .text-section {
+            width: 50%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: ;
+        }
+        .text-section h1 {
+            font-size: 2.5rem;
+        }
+        .text-section p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #fff;
+            color: #000;
+        }
+        .image-section1 {
+                padding-mid:100 px;
+            width: 400px;
+
+            background: url('https://images.pexels.com/photos/6325001/pexels-photo-6325001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;
+            height: 600px;
+        }
+                .image-section2 {
+
+            width: 400px;
+
+            background: url('https://images.pexels.com/photos/8474429/pexels-photo-8474429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;
+            height: 400px;
+        }
+        .image-contect {
+                padding-mid:100 px;
+            width: 400px;
+
+            background: url('https://images.pexels.com/photos/6325001/pexels-photo-6325001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center/cover;
+            height: 600px;
+        }
+         .container {
+            display: flex;
+            max-width: 900px;
+            gap: 20px;
+        }
+
+        .service-box {
+    background-color: #f5f0e6;
+    padding: 50px; /* Increased padding for a bigger box */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centering content vertically */
+    align-items: center; /* Centering content horizontally */
+}
+
+.service-box h2 {
+    font-size: 32px; /* Larger heading */
+    font-weight: bold;
+    color: #000;
+}
+
+.service-box p {
+    font-size: 18px; /* Larger paragraph text */
+    color: #555;
+    margin-top: 12px;
+    text-align: center;
+}
+
+        .image-box {
+            margin-top: 15px;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-box a {
+            position: absolute;
+            top: 10;
+            bottom:10;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            z-index: 2;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-box {
+                width: 90%;
+            }
+        }
+         /* Footer styles */
+    .footer {
+   background-color: green;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed White Header -->
+    <header class="header">
+       <div class="logo">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+      UR Frequency
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="https://www.urfrequency.site">Home</a></li>
+        <li><a href="https://www.urfrequency.site/carriers">Internships and Carrires</a></li>
+        
+        <li><a href="https://www.urfrequency.site/deg">Online degree and Certificates</a></li>
+                <li><a href="https://www.urfrequency.site/sat">UR Statellite Communications</a></li>
+        <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
+        <li><a href="https://www.urfrequency.site/celestial_data">Celestail Data</a></li>
+      </ul>
+    </nav>
+    <div class="menu-icon">&#9776;</div>
+           </header>
+
+    <!-- Sections -->
+<section id="home">
+    <img src="https://images.pexels.com/photos/8474718/pexels-photo-8474718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="UR Frequency Home">
+
+            <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" class="logo" style="height: 150px; width: auto; " />
+                <div class="home-content">
+                    
+            <h2>Services</h2>
+
+            <p>You can scroll down and find services according to your need</p>
+
+        </div>
+
+        
+    
+</section>
+
+
+
+    <section id="services">
+        <div>
+            <h3>Our Services</h3>
+            <p>We are offering services that you can easily </p>
+            <p>See space and also get education</p>
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="https://urmathematician.github.io/urfrequency_celestial/"></a>
+            <h2>Celestial data</h2>
+            <p>Sun moon, Live celestial data and moon path</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/33153/raisting-sattelit-reception-signal.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/ramadan"></a>
+            <h2>Ramadan Special </h2>
+            <p>Time limited and avalable for very few regions in this world specially in Pakistan. Pakistan (Multan, Jahanian, Lahore, Karachi, Islamabad, Gujranwalan), Turkey (Istanbul), Germany (Berlin), Qatar (Doha), England (London) and Russia (Moscow)</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/2233416/pexels-photo-2233416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+    </div>
+    </section>
+<section id="more-services">
+
+        <div>
+          
+            <h3>Coding Service</h3>
+
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="https://www.urfrequency.site/terminal/"></a>
+            <h2>Terminal</h2>
+            <p>Terminal used to give cammands and acesses websites links and use apps in Linux envirnoment.</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/207580/pexels-photo-207580.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/telescope"></a>
+            <h2>Live telescope </h2>
+            <p>UR Frequency is offering the free acess of live telesope, you can make your camera live here and also watch watch others live cams of sky all over the world (Still working)</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/901947/pexels-photo-901947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+    <section id="services">
+        <div>
+         
+            <h3>Yearly</h3>
+
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="https://www.urfrequency.site/yrdata"></a>
+            <h2>Yearly Data</h2>
+            <p>Here you'll get data of whole year.</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/timeline"></a>
+            <h2>Data Sheet of Research </h2>
+            <p>Time line Research of UR Frequency</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/1178684/pexels-photo-1178684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+                  
+
+        <!-- Satellite Services -->
+       
+    </div>
+    </div>
+</div>
+    </section>
+        <section id="services">
+        <div>
+         
+            <h3>Education</h3>
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="https://www.urfrequency.site/books"></a>
+            <h2>Books</h2>
+            <p>Here you'll get free.</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/deg"></a>
+            <h2>Certifications </h2>
+            <p>Comming Soon, we'll Provide Certificaties and Degrees and help you in your space related projects. This event haven't started yet.</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/30869086/pexels-photo-30869086/free-photo-of-wooden-letter-tiles-spelling-csu-on-table.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+                  
+
+        <!-- Satellite Services -->
+       
+    </div>
+    </div>
+</div>
+    </section>
+     <section id="services">
+        <div>
+            <h3>Software</h3>
+            <p>We upload the free versions of CAD and engineering softwares, also have creak video  </p>
+            <p> download and Enjoy </p>
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/appstore"></a>
+            <h2>UR App Store</h2>
+            <p>Here you can download apps (Android and IOS and old OS of mobiles like JAVA and Mobile DOS early 2008)</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/365194/pexels-photo-365194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/softwares"></a>
+            <h2>Engineering Softwares</h2>
+            <p>All versions of Engeering Softwares are here, download and use for free. </p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+    <section id="services">
+        <div>
+            <h3>Education</h3>
+            <p>Free Lactures but paid certificates</p>
+
+                <div class="container">
+        <!-- IoT Solutions -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/lessons"></a>
+            <h2>Lactures and research papers</h2>
+            <p>Here you can download apps (Android and IOS and old OS of mobiles like JAVA and Mobile DOS early 2008)</p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/5716025/pexels-photo-5716025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Celestial">
+            </div>
+        </div>
+
+        <!-- Satellite Services -->
+        <div class="service-box">
+            <a href="http://www.urfrequency.site/vid"></a>
+            <h2>Videos and gifs</h2>
+            <p>All versions of Engeering Softwares are here, download and use for free. </p>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/41006/satellite-soyuz-spaceship-space-station-41006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramadan">
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+   
+
+    <script>
+        // Scroll Animation for Sections
+        function revealSections() {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealSections);
+        window.addEventListener("load", revealSections);
+    </script>
+
+  <script>
+
+   
+document.querySelector('.menu-icon').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('open');
+});
+
+
+  </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7905341714144701"
+     crossorigin="anonymous"></script>
+  
+<footer class="footer">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.7160164961047!2d74.32078580000001!3d31.5319588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190500656fcd43%3A0x1ed5f8ca4a901821!2sUR%20Frequency!5e0!3m2!1sen!2s!4v1737041347918!5m2!1sen!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   
+<p> .</p>
+    <p>&copy; 2024 UR Frequency. We made Future. </p>
+      Email us: contact@urfrequency.site.  (Service not avaliable yet)</a>
+    </p>
+  </footer>
+</body>
+</html>
