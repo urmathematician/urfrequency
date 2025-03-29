@@ -14,28 +14,26 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
-  body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #000428, #004e92);
-  color: #fff;
-  min-height: 100vh;
-  /* Remove padding-top */
-}
 
-    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #000428, #004e92);
+      color: #fff;
+      min-height: 100vh;
+    }
+
     a {
       color: #f4a261;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    
+
     a:hover {
       color: #ffba7a;
     }
-    
+
     /* Header */
- .header {
+.header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -143,13 +141,12 @@
       margin: 0 auto;
       padding: 20px;
     }
-    
     h1 {
       text-align: center;
       margin: 20px 0;
       font-size: 2.5rem;
     }
-    
+
     .container-text {
       max-width: 800px;
       margin: 20px auto;
@@ -157,15 +154,14 @@
       font-size: 1.1rem;
       line-height: 1.8;
     }
-    
-    /* Team Container */
+
     .team-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       padding: 20px;
     }
-    
+
     .team-member {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
@@ -173,12 +169,12 @@
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    
+
     .team-member:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
-    
+
     .team-member img {
       width: 120px;
       height: 120px;
@@ -186,16 +182,16 @@
       margin-bottom: 15px;
       border: 3px solid #fff;
     }
-    
+
     .team-member h3 {
       margin: 10px 0 5px;
       font-size: 1.2rem;
     }
-    
+
     .team-member p {
       font-size: 0.95rem;
     }
-    
+
     /* Footer */
     footer {
       background: rgba(0, 0, 0, 0.9);
@@ -203,28 +199,38 @@
       padding: 20px 10px;
       font-size: 0.9rem;
     }
-    h3, p{
-        color:white;
+
+    h3, p {
+      color: white;
+    }
+
+    /* Mobile responsive fix */
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-menu {
+        position: static;
+        max-height: none;
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
-<header class="header">
-      
+  <header class="header">
     <div class="logo">
-      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo">
       UR Frequency
     </div>
     <nav class="nav-menu">
       <ul>
         <li><a href="https://www.urfrequency.site">Home</a></li>
-        <li><a href="https://www.urfrequency.site/carriers">Internships and Carrires</a></li>
-        
+        <li><a href="https://www.urfrequency.site/carriers">Internships and Careers</a></li>
         <li><a href="https://www.urfrequency.site/deg">Online degree and Certificates</a></li>
-                <li><a href="https://www.urfrequency.site/sat">UR Statellite Communications</a></li>
-        
-
+        <li><a href="https://www.urfrequency.site/sat">UR Satellite Communications</a></li>
         <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
         <li><a href="https://www.urfrequency.site/contact">Contact Us</a></li>
       </ul>
@@ -232,7 +238,6 @@
     <div class="menu-icon">&#9776;</div>
   </header>
 
-  
   <!-- Main Content -->
   <main>
     <section style="text-align: center;">
@@ -246,68 +251,61 @@
     </section>
     <section class="team-container">
       <!-- Team Member 1 -->
-        <a href ="https://www.urfrequency.site/team/ubaid">
-      <div class="team-member">
-        
-        <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman">
-        <h3>Ubaid UR Rehman</h3>
-        <p>Owner, Scientist,Astronaut, Programmer, Researcher & Site Engineer</p>
-        <p>Email: <a href="mailto:ubaidurrehman@urfrequency.site">ubaidurrehman@urfrequency.site</a></p>
-      
-      </div>
-        </a>
-        <a href ="https://www.urfrequency.site/team/laiba">
-       <div class="team-member">
-        <img src="https://i.pinimg.com/736x/31/6d/80/316d80a7e6702c3df8ad7c3eab1fcfc8.jpg" alt="Laiba Ubaid">
-        <h3>Laiba Momal</h3>
-        <p> Researcher & Astronaut</p>
-        
-      </div>
+      <a href="https://www.urfrequency.site/team/ubaid">
+        <div class="team-member">
+          <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman">
+          <h3>Ubaid UR Rehman</h3>
+          <p>Owner, Scientist, Astronaut, Programmer, Researcher & Site Engineer</p>
+          <p>Email: <a href="mailto:ubaidurrehman@urfrequency.site">ubaidurrehman@urfrequency.site</a></p>
+        </div>
+      </a>
+      <a href="https://www.urfrequency.site/team/laiba">
+        <div class="team-member">
+          <img src="https://i.pinimg.com/736x/31/6d/80/316d80a7e6702c3df8ad7c3eab1fcfc8.jpg" alt="Laiba Ubaid">
+          <h3>Laiba Momal</h3>
+          <p>Researcher & Astronaut</p>
+        </div>
       </a>
       <!-- Team Member 2 -->
-      <a href ="https://www.urfrequency.site/team/chemist">
-      <div class="team-member">
-        <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb">
-        <h3>Haseeb</h3>
-        <p>Chemistry Researcher,Astronaut</p>
-        <p>Email: <a href="mailto:haseebchemistry@urfrequency.site">haseebchemistry@urfrequency.site</a></p>
-      </div>
+      <a href="https://www.urfrequency.site/team/chemist">
+        <div class="team-member">
+          <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb">
+          <h3>Haseeb</h3>
+          <p>Chemistry Researcher, Astronaut</p>
+          <p>Email: <a href="mailto:haseebchemistry@urfrequency.site">haseebchemistry@urfrequency.site</a></p>
+        </div>
       </a>
       <!-- Team Member 3 -->
-      <a href ="https://www.urfrequency.site/team/supervisor">
-      <div class="team-member">
-        <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir">
-        <h3>Muhammad Shaid Nazir, Astronaut</h3>
-        <p>Supervisor</p>
-        <p>Email: <a href="mailto:contect@urfrequency.site">contect@urfrequency.site</a></p>
-      </div>
+      <a href="https://www.urfrequency.site/team/supervisor">
+        <div class="team-member">
+          <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir">
+          <h3>Muhammad Shaid Nazir, Astronaut</h3>
+          <p>Supervisor</p>
+          <p>Email: <a href="mailto:contect@urfrequency.site">contect@urfrequency.site</a></p>
+        </div>
       </a>
       <!-- Team Member 4 -->
-      <a href ="https://www.urfrequency.site/team/hr">
-      <div class="team-member">
-        <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman">
-        <h3>Asad ur Rehman</h3>
-        <p>HR Manager, Astronaut</p>
-        <p>Email: <a href="mailto:hr@urfrequency.site">hr@urfrequency.site</a></p>
-      </div>
+      <a href="https://www.urfrequency.site/team/hr">
+        <div class="team-member">
+          <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman">
+          <h3>Asad ur Rehman</h3>
+          <p>HR Manager, Astronaut</p>
+          <p>Email: <a href="mailto:hr@urfrequency.site">hr@urfrequency.site</a></p>
+        </div>
       </a>
-      <!-- Additional team members can be added similarly -->
     </section>
   </main>
-  
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 UR Frequency. All rights reserved.</p>
   </footer>
-  
- <script>
 
-   
-document.querySelector('.menu-icon').addEventListener('click', function() {
-    document.querySelector('.nav-menu').classList.toggle('open');
-});
-
-
+  <!-- Script for Menu Toggle -->
+  <script>
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+      document.querySelector('.nav-menu').classList.toggle('open');
+    });
   </script>
 </body>
 </html>
