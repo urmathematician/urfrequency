@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UB & Babu Forever 💚💙</title>
+  <style>
+   body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  background-image: url('https://images.pexels.com/photos/704752/pexels-photo-704752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating heart animation */
+.heart {
+  position: absolute;
+  color: #ff69b4;
+  font-size: 1.5rem;
+  animation: floatHeart 10s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatHeart {
+  0% {
+    bottom: -50px;
+    left: calc(100% * var(--x));
+    transform: translateX(-50%) scale(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 110%;
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .calendar-section, .age-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .nickname {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #ffeaa7;
+    }
+
+    .age {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .calendar-day {
+      padding: 0.5rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .calendar-day.header {
+      font-weight: bold;
+      color: #f1f1f1;
+      background: transparent;
+    }
+
+    .highlight {
+      background-color: #00ff88;
+      color: black;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    @media (min-width: 768px) {
+      .calendar-section, .age-section {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+     header {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem 0;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #f0f0f0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px 30px 0 0;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer span {
+      color: #ffeaa7;
+      font-weight: bold;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+  </style>
+</head>
+<body>
+      <header>
+    <h2>💞 Ubaid & Laiba's Love 💞</h2>
+  </header>
+<!-- Floating Hearts -->
+<div class="heart" style="--x: 0.1;">💗</div>
+<div class="heart" style="--x: 0.3;">💞</div>
+<div class="heart" style="--x: 0.5;">💖</div>
+<div class="heart" style="--x: 0.7;">💘</div>
+<div class="heart" style="--x: 0.9;">💝</div>
+
+  <h1>💖 UB & Babu's Love Timeline 💖</h1>
+ <div class="calendar-section">
+    <div class="card" id="standardCalendar">
+      <div class="title">🌍 International Calendar</div>
+      <div id="standardMonth"></div>
+      <div class="calendar" id="stdCal"></div>
+    </div>
+
+    <div class="card" id="customCalendar">
+      <div class="title">💖Our reborn Calendar</div>
+      <div id="customMonth"></div>
+      <div class="calendar" id="altCal"></div>
+    </div>
+  </div>
+
+  <div class="age-section">
+    <div class="card">
+      <div class="title">Hubby: Ubaid</div>
+      <div class="nickname">(UB)</div>
+      <div class="age" id="ubaidAge"></div>
+      <div class="age" id="ubaidAltAge"></div>
+    </div>
+
+    <div class="card">
+      <div class="title">Wifey: Laiba</div>
+      <div class="nickname">(Babu)</div>
+      <div class="age" id="laibaAge"></div>
+      <div class="age" id="laibaAltAge"></div>
+    </div>
+  </div>
+<!-- Floating Hearts -->
+<div class="heart" style="--x: 0.1;">💗</div>
+<div class="heart" style="--x: 0.3;">💞</div>
+<div class="heart" style="--x: 0.5;">💖</div>
+<div class="heart" style="--x: 0.7;">💘</div>
+<div class="heart" style="--x: 0.9;">💝</div>
+
+   <footer>
+    Made with ❤️ by <span>UB</span> for <span>Babu</span> — Together forever 💚💙
+  </footer>
+  <script>
+    function getAge(birthDate, refDate) {
+      let age = refDate.getFullYear() - birthDate.getFullYear();
+      const m = refDate.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && refDate.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    function generateCalendar(year, month, currentDay) {
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const calendar = [];
+
+      // Add headers
+      dayNames.forEach(day => {
+        calendar.push(`<div class="calendar-day header">${day}</div>`);
+      });
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        calendar.push(`<div class="calendar-day"></div>`);
+      }
+
+      for (let i = 1; i <= lastDate; i++) {
+        const highlight = i === currentDay ? 'highlight' : '';
+        calendar.push(`<div class="calendar-day ${highlight}">${i}</div>`);
+      }
+
+      return calendar.join('');
+    }
+
+    function updateEverything() {
+      const today = new Date();
+
+      // 🎂 Age calculations
+      const ubBirthday = new Date("1999-11-25");
+      const babuBirthday = new Date("2004-02-10");
+
+      document.getElementById("ubaidAge").innerText = `🎂 Age (world): ${getAge(ubBirthday, today)} years`;
+      document.getElementById("laibaAge").innerText = `🎂 Age (world): ${getAge(babuBirthday, today)} years`;
+
+      // 🌟 Custom calendar mapping
+      const realStart = new Date("2025-04-07");
+      const customStart = new Date("2020-01-01");
+      const diffDays = Math.floor((today - realStart) / (1000 * 60 * 60 * 24));
+      const customToday = new Date(customStart.getTime() + diffDays * 24 * 60 * 60 * 1000);
+
+      document.getElementById("ubaidAltAge").innerText = `📆 Age (Ubaid and Laiba world): ${getAge(ubBirthday, customToday)} years`;
+      document.getElementById("laibaAltAge").innerText = `📆 Age (Ubaid and Laiba world): ${getAge(babuBirthday, customToday)} years`;
+
+      // 🗓 Standard calendar
+      const stdMonthText = today.toLocaleString('default', { month: 'long', year: 'numeric' });
+      document.getElementById("standardMonth").innerText = stdMonthText;
+      document.getElementById("stdCal").innerHTML = generateCalendar(today.getFullYear(), today.getMonth(), today.getDate());
+
+      // 🗓 Custom calendar
+      const altMonthText = customToday.toLocaleString('default', { month: 'long', year: 'numeric' });
+      document.getElementById("customMonth").innerText = altMonthText;
+      document.getElementById("altCal").innerHTML = generateCalendar(customToday.getFullYear(), customToday.getMonth(), customToday.getDate());
+    }
+
+    updateEverything();
+  </script>
+</body>
+</html>
