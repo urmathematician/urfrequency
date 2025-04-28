@@ -343,7 +343,7 @@
       <label>Experience in Years:</label>
       <input type="number" name="experience" min="0" required>
     </div>
-
+<p>Upload Documents with your full name</p>
     <div class="form-group">
       <label>Upload Work Experience Letter:</label>
       <input type="file" name="experience_letter">
@@ -382,6 +382,49 @@ form.addEventListener('submit', e => {
   .then(response => alert('Application Submitted Successfully!'))
   .catch(error => alert('Error! ' + error.message));
 });
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var driveFolder = DriveApp.getFolderById('1LhsfB4aBnvRHhTGPfAKC4WzYrnFibwAl?'); // Upload folder
+
+  var data = e.parameter;
+
+  // Upload files
+  var uploadedFiles = [];
+  var fields = ['experience_letter', 'cv', 'certificates'];
+
+  fields.forEach(function(field) {
+    try {
+      var blob = e.parameters[field];
+      if (blob) {
+        var decodedBlob = Utilities.base64Decode(blob.split(",")[1]);
+        var contentType = blob.match(/data:(.*?);/)[1];
+        var filename = field + "_" + new Date().getTime();
+        var file = driveFolder.createFile(decodedBlob, filename, contentType);
+        uploadedFiles.push(file.getUrl());
+      } else {
+        uploadedFiles.push("No File");
+      }
+    } catch (err) {
+      uploadedFiles.push("Error Uploading");
+    }
+  });
+
+  sheet.appendRow([
+    data.name,
+    data.phone,
+    data.qualification,
+    data.dob,
+    data.experience,
+    uploadedFiles[0], // Experience Letter Link
+    uploadedFiles[1], // CV Link
+    uploadedFiles[2], // Certificates Link
+    new Date() // Submission time
+  ]);
+
+  return ContentService.createTextOutput(
+    JSON.stringify({"result":"success"})
+  ).setMimeType(ContentService.MimeType.JSON);
+}
 
 </script>
 
