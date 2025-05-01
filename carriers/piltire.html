@@ -382,28 +382,43 @@ refrigerants and heavy mechanical maintenance</p>
 </div>
 
   <script>
-  document.querySelector('.menu-icon').addEventListener('click', function () {
-      document.querySelector('.nav-menu').classList.toggle('open');
-    });
+<script>
+document.getElementById('applicationForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent default form submission
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxpCrVjy8ELX5JepTM6YIRGlXJvKIY77dCVZ9LqIdGm-nyPmpCbiwd-GIdH-hRgpQnB/exec';
-    const form = document.getElementById('applicationForm');
+  // Collect form data
+  const formData = {
+    name: document.querySelector('input[name="name"]').value,
+    phone: document.querySelector('input[name="phone"]').value,
+    email: document.querySelector('input[name="email"]').value,
+    qualification: document.querySelector('input[name="qualification"]').value,
+    institution: document.querySelector('input[name="institution"]').value,
+    department: document.querySelector('input[name="department"]').value,
+    designation: document.querySelector('input[name="designation"]').value,
+    dob: document.querySelector('input[name="dob"]').value,
+    willing: document.querySelector('input[name="willing"]').value,
+    research: document.querySelector('input[name="research"]').value
+  };
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      
-      // Create a FormData object from the form
-      const formData = new FormData(form);
+  // Define the Google Apps Script web app URL
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyCnn3JpKh54AXkXvrspFbSPTD96WRkeaNmmuUqqeXKHAAf-3WNCB6DcOVkgLKntM_i/exec'; // Replace with your web app URL
 
-      // Use fetch to send the form data as a URL-encoded POST request
-      fetch(scriptURL, {
-        method: 'POST',
-        body: formData, // Send the FormData object directly
-      })
-      .then(response => alert('Application Submitted Successfully!'))
-      .catch(error => alert('Error! ' + error.message));
-    });
-  </script>
+  // Send the form data to the Google Apps Script
+  fetch(scriptUrl, {
+    method: 'POST',
+    contentType: 'application/json',
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.text())
+  .then(responseText => {
+    alert('Form submitted successfully!');
+    document.getElementById('applicationForm').reset(); // Reset form after submission
+  })
+  .catch(error => {
+    alert('Error submitting the form: ' + error);
+  });
+});
+</script>
   
   <footer>
 © 2024 UR Frequency. We made Future.
