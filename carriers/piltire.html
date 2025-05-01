@@ -383,6 +383,7 @@ refrigerants and heavy mechanical maintenance</p>
 
   <script>
 <script>
+<script>
 document.getElementById('applicationForm').addEventListener('submit', function(e) {
   e.preventDefault(); // Prevent default form submission
 
@@ -400,24 +401,32 @@ document.getElementById('applicationForm').addEventListener('submit', function(e
     research: document.querySelector('input[name="research"]').value
   };
 
+  // Log the form data to make sure it's collected properly
+  console.log('Form data:', formData);
+
   // Define the Google Apps Script web app URL
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyCnn3JpKh54AXkXvrspFbSPTD96WRkeaNmmuUqqeXKHAAf-3WNCB6DcOVkgLKntM_i/exec'; // Replace with your web app URL
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyCnn3JpKh54AXkXvrspFbSPTD96WRkeaNmmuUqqeXKHAAf-3WNCB6DcOVkgLKntM_i/exec'; // Your Google Apps Script URL
 
   // Send the form data to the Google Apps Script
   fetch(scriptUrl, {
     method: 'POST',
-    contentType: 'application/json',
+    headers: {
+      'Content-Type': 'application/json' // Ensure content-type is application/json
+    },
     body: JSON.stringify(formData)
   })
   .then(response => response.text())
   .then(responseText => {
+    console.log('Response from Google Apps Script:', responseText); // Log the response from the server
     alert('Form submitted successfully!');
     document.getElementById('applicationForm').reset(); // Reset form after submission
   })
   .catch(error => {
-    alert('Error submitting the form: ' + error);
+    console.error('Error submitting the form:', error); // Log any errors
+    alert('Error submitting the form. Check the console for more details.');
   });
 });
+</script>
 </script>
   
   <footer>
