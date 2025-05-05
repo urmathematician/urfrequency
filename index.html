@@ -1,8 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="icon" href="https://img.hotimg.com/1ef97f5ba533d7bd7.png" type="image/png">
   <title>UR Frequency - We Made Future</title>
   <style>
     :root {
@@ -246,6 +249,65 @@
     #celestialBodies li strong {
       font-weight: bold;
     }
+    #clock-container {
+            background: green; /* Set the desired background color */
+            padding: 20px; /* Add padding for better appearance */
+            border-radius: 15px; /* Adjust the border radius as needed */
+        }
+
+        #clock {
+            background: rgba(0, 85, 8, 0.5); /* Adjust the transparency value */
+            border-radius: 10px;
+            display: inline-block;
+            padding: 10px; /* Add some padding for better appearance */
+        }
+
+        #clock-time {
+            font-size: 20px; /* Adjust the font size as needed */
+            font-weight: bold;
+            letter-spacing: 2px; /* Adjust the letter spacing as needed */
+        }
+
+        #timeText {
+            margin: 10px; /* Adjust the margin as needed */
+        }
+        .astro-event-block {
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .astro-event-block h2 {
+    font-size: 1.6em;
+    color: #ffcc00;
+  }
+  .astro-event-block .event h3 {
+    font-size: 1.2em;
+    color: #81e6f7;
+  }
+  .astro-event-block .event p {
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  .astro-event-block img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .astro-event-block a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffd700;
+    text-decoration: underline;
+  }
+  .p1{
+      color:red;
+  }
   </style>
 </head>
 <body>
@@ -267,6 +329,11 @@
     <div>
       <h1>We Made Future</h1>
       <p>Explore the world of innovation with us.</p>
+    <div id="clock">
+                    <h3>Local Time:</h3>
+                    <div id="clock-time">12:34</div>
+                </div>
+
     </div>
   </section>
 
@@ -279,6 +346,15 @@
       </ul>
     </div>
   </div>
+<div class="astro-event-block" id="astroEventBlock">
+  <h2>🌍 Trending Space & Earth Event</h2>
+  <p>Comets, Meteoroids, Asteroids, Solar/Lunar Eclipses, Earthquakes, and Solar Storms
+
+</p>
+  <div class="event" id="eventContent">
+    <p>Loading event news...</p>
+  </div>
+</div>
 
   <section class="section" id="vision">
     <h2>Our Vision and Values</h2>
@@ -308,7 +384,7 @@
   <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="card-grid">
-  <a href="https://www.urfrequency.site/celestial" class="card">
+  <a href="https://www.urfrequency.site/celestial_data" class="card">
     <h3>Celestial Data</h3>
     <p>Access astronomical information and celestial tracking tools.</p>
   </a>
@@ -388,6 +464,20 @@
   
 
   <script>
+       function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+
+        const clockElement = document.getElementById('clock');
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+        setTimeout(updateClock, 1000); // Update every second
+    }
+
+    // Initial call to start the clock
+    updateClock();
     function fetchAstronomicalData() {
       const apiUrl = "https://api.le-systeme-solaire.net/rest/bodies/";
 
@@ -438,7 +528,41 @@
       fetchAstronomicalData();
       document.getElementById('celestialContainer').classList.add('collapsed');
     };
-      
+     async function loadEventNews() {
+    const keywords = [
+      "comet", "meteor", "meteoroid", "asteroid",
+      "solar eclipse", "lunar eclipse", "eclipse",
+      "earthquake", "solar storm", "geomagnetic"
+    ];
+
+    try {
+      const res = await fetch("https://api.spaceflightnewsapi.net/v4/articles/?limit=15");
+      const data = await res.json();
+
+      const article = data.results.find(a => {
+        const text = `${a.title} ${a.summary}`.toLowerCase();
+        return keywords.some(keyword => text.includes(keyword));
+      });
+
+      if (article) {
+        const eventHTML = `
+          <h3>${article.title}</h3>
+          <p>${article.summary.slice(0, 200)}...</p>
+          <img src="${article.image_url}" alt="Event image" />
+          <br />
+          <a href="${article.url}" target="_blank">Read More</a>
+        `;
+        document.getElementById("eventContent").innerHTML = eventHTML;
+      } else {
+        document.getElementById("eventContent").innerHTML = "<p1>No matching event found today.</p1>";
+      }
+    } catch (err) {
+      document.getElementById("eventContent").innerHTML = `<p>Error loading news. (${err.message})</p>`;
+      console.error("Fetch error:", err);
+    }
+  }
+
+  loadEventNews(); 
   </script>
 </body>
 </html>
