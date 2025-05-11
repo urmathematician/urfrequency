@@ -147,29 +147,29 @@
 
     const form = document.getElementById("applyForm");
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
+   form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-      const data = Object.fromEntries(new FormData(form).entries());
+  const data = Object.fromEntries(new FormData(form).entries());
 
-fetch("https://script.google.com/macros/s/AKfycbw9ch3FmCLtoIETE3jJmOLfXXnlsPOfCPiTon2TwhhkzApcRL2S39q1_FlP_e5AoVsc/exec", {
-
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(res => {
-        if (res.ok) {
-          alert("✅ Application submitted successfully!");
-          form.reset();
-          document.getElementById('additionalFields').classList.add('hidden');
-        } else {
-          alert("❌ Submission failed. Please try again.");
-        }
-      }).catch(() => {
-        alert("⚠️ Network error. Check your internet connection or try later.");
-      });
+  fetch("https://script.google.com/macros/s/AKfycbw9ch3FmCLtoIETE3jJmOLfXXnlsPOfCPiTon2TwhhkzApcRL2S39q1_FlP_e5AoVsc/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json())  // Make sure to parse the JSON response
+  .then(response => {
+    if (response.status === "success") {
+      alert(response.message);  // Show the success message from the server
+      form.reset();
+      document.getElementById('additionalFields').classList.add('hidden');
+    } else {
+      alert("❌ Submission failed. Please try again.");
+    }
+  }).catch(() => {
+    alert("⚠️ Network error. Check your internet connection or try later.");
+  });
     });
   </script>
 </body>
