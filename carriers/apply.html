@@ -162,7 +162,8 @@
       willing: form.querySelector('[name="willing"]').value
     };
 
-    fetch("YOUR_WEB_APP_URL_HERE", {
+    fetch("https://script.google.com/macros/s/AKfycbzYK2WjmOhIWOx5z7r2C3736TVbPcAcxhmh0Rwtb9Q/exec
+", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -175,6 +176,17 @@
       } else {
         alert("Failed to submit. Try again.");
       }
+      if (response.ok) {
+          alert("✅ Application submitted successfully!");
+          form.reset();
+          document.getElementById('additionalFields').classList.add('hidden');
+        } else {
+          alert("❌ Submission failed. Please try again.");
+        }
+      })
+      .catch(() => {
+        alert("⚠️ Network error. Check your internet connection or try later.");
+      });
     });
   });
 
