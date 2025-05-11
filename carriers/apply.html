@@ -152,7 +152,8 @@
 
       const data = Object.fromEntries(new FormData(form).entries());
 
-      fetch("https://script.google.com/macros/s/AKfycbzYK2WjmOhIWOx5z7r2C3736TVbPcAcxhmh0Rwtb9Q/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzYK2WjmOhIWOx5z7r2C3736TVbPcAcxhmh0Rwtb9Q/exec", {
+
         method: "POST",
         body: JSON.stringify(data),
         headers: {
