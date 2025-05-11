@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UR Frequency - Research Apply Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #000000, #004d00); /* black to dark green */
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    .glass {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 40px rgba(0, 255, 0, 0.2);
+    }
+    label {
+      color: #90ee90;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-green-200 font-sans">
+  <div class="glass max-w-2xl w-full">
+    <h1 class="text-4xl font-bold text-center text-lime-400 mb-2">UR Frequency</h1>
+    <h2 class="text-xl text-center mb-6 text-green-300">Apply Form</h2>
+
+    <form id="applyForm" class="space-y-4">
+      <div>
+        <label class="block">Name</label>
+        <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700" required>
+      </div>
+
+      <div>
+        <label class="block">Apply For</label>
+        <select id="applyFor" class="w-full p-2 rounded bg-black text-green-300 border border-green-700" onchange="toggleFormFields()">
+          <option value="">Select Option</option>
+          <option value="job">Job</option>
+          <option value="internship">Internship</option>
+          <option value="research">Research</option>
+        </select>
+      </div>
+
+      <div id="jobComingSoon" class="hidden text-center text-yellow-400 font-semibold">
+        Coming Soon!
+      </div>
+
+      <div id="additionalFields" class="hidden">
+        <div>
+          <label class="block">College / University / Job Place</label>
+          <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block">Roll Number or Designation in Job</label>
+          <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block">Department</label>
+          <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block">Interest</label>
+          <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block mb-1">Choose Your Research Subject</label>
+          <select class="w-full p-2 rounded bg-black text-green-300 border border-green-700" id="subjectSelect" onchange="toggleOtherSubject()">
+            <option>Physics</option>
+            <option>Engineering</option>
+            <option>Chemistry</option>
+            <option>Biology</option>
+            <option>Astro Physics</option>
+            <option>Geo Physics</option>
+            <option>Aronatics</option>
+            <option>HVAC</option>
+            <option>Robotics</option>
+            <option>Aero Space</option>
+            <option>Quantum Mechanics</option>
+            <option>Rockets</option>
+            <option>Satellites</option>
+            <option>Electronics</option>
+            <option>Solar Energy</option>
+            <option>Wind Energy</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div id="otherSubjectInput" class="hidden">
+          <label class="block">Please Specify Other Subject</label>
+          <input type="text" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block">Date of Birth</label>
+          <input type="date" class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+        </div>
+
+        <div>
+          <label class="block">Willing to Join UR Frequency when comes in business?</label>
+          <select class="w-full p-2 rounded bg-black text-green-300 border border-green-700">
+            <option value="yes">Yes</option>
+            <option value="maybe">Maybe</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="w-full p-3 bg-green-700 hover:bg-green-800 rounded text-white font-bold">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleFormFields() {
+      const applyFor = document.getElementById('applyFor').value;
+      const additionalFields = document.getElementById('additionalFields');
+      const jobComingSoon = document.getElementById('jobComingSoon');
+
+      if (applyFor === "job") {
+        additionalFields.classList.add("hidden");
+        jobComingSoon.classList.remove("hidden");
+      } else if (applyFor === "internship" || applyFor === "research") {
+        additionalFields.classList.remove("hidden");
+        jobComingSoon.classList.add("hidden");
+      } else {
+        additionalFields.classList.add("hidden");
+        jobComingSoon.classList.add("hidden");
+      }
+    }
+
+    function toggleOtherSubject() {
+      const subjectSelect = document.getElementById("subjectSelect").value;
+      const otherSubjectInput = document.getElementById("otherSubjectInput");
+
+      if (subjectSelect === "Other") {
+        otherSubjectInput.classList.remove("hidden");
+      } else {
+        otherSubjectInput.classList.add("hidden");
+      }
+    }
+  const form = document.getElementById("applyForm");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const data = {
+      name: form.querySelector('[name="name"]').value,
+      applyFor: form.querySelector('[name="applyFor"]').value,
+      institute: form.querySelector('[name="institute"]').value,
+      roll: form.querySelector('[name="roll"]').value,
+      department: form.querySelector('[name="department"]').value,
+      interest: form.querySelector('[name="interest"]').value,
+      subject: form.querySelector('[name="subject"]').value,
+      otherSubject: form.querySelector('[name="otherSubject"]').value,
+      dob: form.querySelector('[name="dob"]').value,
+      willing: form.querySelector('[name="willing"]').value
+    };
+
+    fetch("YOUR_WEB_APP_URL_HERE", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      if (res.ok) {
+        alert("Application submitted successfully!");
+        form.reset();
+      } else {
+        alert("Failed to submit. Try again.");
+      }
+    });
+  });
+
+
+  </script>
+</body>
+</html>
