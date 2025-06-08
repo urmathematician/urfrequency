@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Chronicle - Latest Space News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-black: #0a0e17;
+            --nebula-purple: #6a00ff;
+            --star-blue: #00b4ff;
+            --galaxy-pink: #ff00b4;
+            --cosmic-text: #e0e0ff;
+        }
+        
+        body {
+            background-color: var(--space-black);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(106, 0, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(0, 180, 255, 0.15) 0%, transparent 20%);
+            color: var(--cosmic-text);
+            font-family: 'Space Mono', monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--star-blue), var(--galaxy-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(106, 0, 255, 0.3);
+        }
+        
+        .date-display {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--star-blue);
+            font-size: 1.2rem;
+        }
+        
+        .main-headline {
+            position: relative;
+            margin-bottom: 40px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .main-headline img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .main-headline:hover img {
+            transform: scale(1.03);
+        }
+        
+        .headline-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 30px;
+        }
+        
+        .headline-overlay h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 180, 255, 0.7);
+        }
+        
+        .headline-overlay p {
+            font-size: 1.2rem;
+            max-width: 70%;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background: rgba(20, 25, 45, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 180, 255, 0.2);
+            border-color: rgba(0, 180, 255, 0.3);
+        }
+        
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--star-blue);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        
+        .card-content p {
+            color: rgba(224, 224, 255, 0.8);
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--galaxy-pink);
+            margin-top: 15px;
+        }
+        
+        .category-tag {
+            background: rgba(106, 0, 255, 0.2);
+            color: var(--nebula-purple);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .breaking-news {
+            position: relative;
+            padding: 15px;
+            background: rgba(255, 0, 180, 0.1);
+            border-left: 4px solid var(--galaxy-pink);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .breaking-news:before {
+            content: "BREAKING";
+            font-family: 'Orbitron', sans-serif;
+            background: var(--galaxy-pink);
+            color: black;
+            padding: 3px 10px;
+            margin-right: 15px;
+            font-size: 0.9rem;
+            border-radius: 3px;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--star-blue);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .refresh-btn {
+            background: rgba(0, 180, 255, 0.2);
+            color: var(--star-blue);
+            border: 1px solid var(--star-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+        }
+        
+        .refresh-btn:hover {
+            background: rgba(0, 180, 255, 0.4);
+        }
+        
+        .source-selector {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .source-btn {
+            background: rgba(106, 0, 255, 0.2);
+            color: var(--cosmic-text);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .source-btn.active {
+            background: var(--nebula-purple);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .headline-overlay h2 {
+                font-size: 1.8rem;
+            }
+            
+            .headline-overlay p {
+                max-width: 100%;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date-display {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">UR Frequency News</div>
+            <div class="date-display" id="current-date">Loading date...</div>
+        </header>
+        
+        <div class="source-selector">
+            <button class="source-btn active" data-source="nasa">Space</button>
+            <button class="source-btn" data-source="aljazeera">Middle East</button>
+            <button class="source-btn" data-source="trtworld">Turkey</button>
+            <button class="source-btn" data-source="jang">Pakistan</button>
+            <button class="source-btn" data-source="chinadaily">China</button>
+            <button class="refresh-btn" id="refresh-news">Refresh News</button>
+        </div>
+        
+        <div id="breaking-news-container" class="breaking-news">
+            Loading breaking news...
+        </div>
+        
+        <div id="main-headline-container" class="main-headline">
+            <div class="loading">Loading main headline...</div>
+        </div>
+        
+        <div id="news-grid-container" class="news-grid">
+            <div class="loading">Loading news stories...</div>
+        </div>
+    </div>
+    
+    <script>
+        // Update current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', options);
+        
+        // News sources configuration
+        const newsSources = {
+            nasa: {
+                name: "NASA",
+                apiUrl: "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=5",
+                breakingUrl: "https://www.nasa.gov/news/recently-published/",
+                processData: processNasaData
+            },
+            aljazeera: {
+                name: "Al Jazeera",
+                apiUrl: "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=YOUR_NEWSAPI_KEY",
+                breakingUrl: "https://www.aljazeera.com",
+                processData: processAlJazeeraData
+            },
+            trtworld: {
+                name: "TRT World",
+                apiUrl: "https://newsapi.org/v2/top-headlines?sources=trt-world&apiKey=YOUR_NEWSAPI_KEY",
+                breakingUrl: "https://www.trtworld.com/video/news",
+                processData: processTRTData
+            },
+            jang: {
+                name: "Jang News",
+                apiUrl: "https://newsapi.org/v2/top-headlines?sources=the-news-international&apiKey=YOUR_NEWSAPI_KEY",
+                breakingUrl: "https://jang.com.pk/en/category/trending",
+                processData: processJangData
+            },
+            chinadaily: {
+                name: "China Daily",
+                apiUrl: "https://newsapi.org/v2/top-headlines?sources=china-daily&apiKey=YOUR_NEWSAPI_KEY",
+                breakingUrl: "https://www.chinadaily.com.cn",
+                processData: processChinaDailyData
+            }
+        };
+        
+        let currentSource = 'nasa';
+        
+        // Source selection
+        document.querySelectorAll('.source-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentSource = this.dataset.source;
+                loadNews();
+            });
+        });
+        
+        // Refresh button
+        document.getElementById('refresh-news').addEventListener('click', loadNews);
+        
+        // Initial load
+        loadNews();
+        
+        // Main news loading function
+        async function loadNews() {
+            const source = newsSources[currentSource];
+            
+            try {
+                // Show loading states
+                document.getElementById('breaking-news-container').textContent = "Loading breaking news...";
+                document.getElementById('main-headline-container').innerHTML = '<div class="loading">Loading main headline...</div>';
+                document.getElementById('news-grid-container').innerHTML = '<div class="loading">Loading news stories...</div>';
+                
+                // Fetch data (in a real app, you would use actual API calls)
+                // For demo purposes, we'll use mock data
+                const mockData = getMockData(currentSource);
+                
+                // Process data based on source
+                const processedData = source.processData(mockData);
+                
+                // Update the UI
+                updateNewsUI(processedData);
+                
+                // In a real implementation, you would use fetch():
+                /*
+                const response = await fetch(source.apiUrl);
+                const data = await response.json();
+                const processedData = source.processData(data);
+                updateNewsUI(processedData);
+                */
+                
+            } catch (error) {
+                console.error("Error loading news:", error);
+                document.getElementById('breaking-news-container').textContent = "Error loading news. Please try again.";
+            }
+        }
+        
+        // Process NASA data
+        function processNasaData(data) {
+            const breakingNews = "NASA announces new discovery from James Webb Space Telescope";
+            
+            const mainHeadline = {
+                title: data[0].title,
+                description: data[0].explanation,
+                imageUrl: data[0].url,
+                category: "SPACE EXPLORATION"
+            };
+            
+            const newsItems = data.slice(1).map(item => ({
+                title: item.title,
+                description: item.explanation.substring(0, 150) + "...",
+                imageUrl: item.url,
+                category: "ASTRONOMY",
+                time: "Today",
+                author: "NASA Official"
+            }));
+            
+            return {
+                breakingNews,
+                mainHeadline,
+                newsItems
+            };
+        }
+        
+        // Process Al Jazeera data (mock)
+        function processAlJazeeraData(data) {
+            return {
+                breakingNews: "Global leaders meet to discuss climate change initiatives",
+                mainHeadline: {
+                    title: "New climate report shows alarming trends",
+                    description: "The latest IPCC report indicates faster than expected climate changes worldwide.",
+                    imageUrl: "https://images.unsplash.com/photo-1615874694520-474822394e73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    category: "ENVIRONMENT"
+                },
+                newsItems: [
+                    {
+                        title: "Economic summit addresses global inflation",
+                        description: "World leaders gather to discuss strategies to combat rising inflation rates...",
+                        imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        category: "ECONOMY",
+                        time: "2 hours ago",
+                        author: "Al Jazeera Staff"
+                    },
+                    {
+                        title: "Breakthrough in renewable energy storage",
+                        description: "Scientists develop new battery technology that could revolutionize clean energy...",
+                        imageUrl: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        category: "TECHNOLOGY",
+                        time: "5 hours ago",
+                        author: "Science Correspondent"
+                    }
+                ]
+            };
+        }
+        
+        // Process other sources similarly...
+        function processTRTData(data) {
+            return {
+                breakingNews: "International summit on global security begins in Istanbul",
+                mainHeadline: {
+                    title: "New peace initiative in Middle East",
+                    description: "Regional powers come together to discuss new framework for peace negotiations.",
+                    imageUrl: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    category: "WORLD NEWS"
+                },
+                newsItems: []
+            };
+        }
+        
+        function processJangData(data) {
+            return {
+                breakingNews: "Pakistan announces new economic reforms package",
+                mainHeadline: {
+                    title: "Record harvest expected this season",
+                    description: "Agricultural officials predict bumper crops following favorable weather conditions.",
+                    imageUrl: "https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    category: "LOCAL NEWS"
+                },
+                newsItems: []
+            };
+        }
+        
+        function processChinaDailyData(data) {
+            return {
+                breakingNews: "China launches new satellite for environmental monitoring",
+                mainHeadline: {
+                    title: "Belt and Road initiative reaches new milestone",
+                    description: "100 countries now participating in China's global infrastructure development program.",
+                    imageUrl: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    category: "INTERNATIONAL"
+                },
+                newsItems: []
+            };
+        }
+        
+        // Update the UI with news data
+        function updateNewsUI(data) {
+            // Update breaking news
+            document.getElementById('breaking-news-container').textContent = data.breakingNews;
+            
+            // Update main headline
+            const mainHeadlineContainer = document.getElementById('main-headline-container');
+            mainHeadlineContainer.innerHTML = `
+                <img src="${data.mainHeadline.imageUrl}" alt="${data.mainHeadline.title}">
+                <div class="headline-overlay">
+                    <span class="category-tag">${data.mainHeadline.category}</span>
+                    <h2>${data.mainHeadline.title}</h2>
+                    <p>${data.mainHeadline.description}</p>
+                </div>
+            `;
+            
+            // Update news grid
+            const newsGridContainer = document.getElementById('news-grid-container');
+            if (data.newsItems.length > 0) {
+                newsGridContainer.innerHTML = data.newsItems.map(item => `
+                    <div class="news-card">
+                        <img src="${item.imageUrl}" alt="${item.title}">
+                        <div class="card-content">
+                            <span class="category-tag">${item.category}</span>
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                            <div class="news-meta">
+                                <span>${item.time}</span>
+                                <span>By ${item.author}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add animation to news cards on scroll
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = 1;
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                document.querySelectorAll('.news-card').forEach(card => {
+                    card.style.opacity = 0;
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(card);
+                });
+            } else {
+                newsGridContainer.innerHTML = '<div class="loading">No news items found for this source.</div>';
+            }
+        }
+        
+        // Mock data for demonstration
+        function getMockData(source) {
+            if (source === 'nasa') {
+                return [
+                    {
+                        title: "Webb Telescope Reveals Stunning New Images of Cartwheel Galaxy",
+                        explanation: "The James Webb Space Telescope has captured unprecedented details of the Cartwheel Galaxy, revealing new star formation and galaxy structure insights that could help astronomers understand galactic evolution better than ever before.",
+                        url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        date: "2023-08-15"
+                    },
+                    {
+                        title: "Perseverance Rover Finds Organic Molecules in Jezero Crater",
+                        explanation: "NASA's Perseverance rover has discovered complex organic molecules in Mars' Jezero Crater, adding evidence to the theory that Mars once hosted life in its ancient past when water flowed on the surface.",
+                        url: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        date: "2023-08-14"
+                    },
+                    {
+                        title: "Artemis III Landing Sites Narrowed Down to 13 Options",
+                        explanation: "NASA has identified 13 potential landing regions near the lunar South Pole for the Artemis III mission that will return humans to the Moon, each offering unique scientific opportunities and challenges.",
+                        url: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        date: "2023-08-13"
+                    },
+                    {
+                        title: "New Ion Thruster Breaks Records in NASA Tests",
+                        explanation: "NASA's advanced ion propulsion system has achieved record performance in recent tests, potentially revolutionizing deep space exploration by providing more efficient and longer-lasting propulsion for future missions.",
+                        url: "https://images.unsplash.com/photo-1506443432602-ac2fcd6f54e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        date: "2023-08-12"
+                    },
+                    {
+                        title: "Powerful Solar Storm Headed Toward Earth",
+                        explanation: "A coronal mass ejection from the Sun could produce geomagnetic storms and auroras visible at lower latitudes than usual this weekend, with potential impacts on satellite communications and power grids.",
+                        url: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                        date: "2023-08-11"
+                    }
+                ];
+            }
+            
+            // Return empty array for other sources (mock implementation)
+            return [];
+        }
+    </script>
+</body>
+</html>
