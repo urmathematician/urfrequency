@@ -519,15 +519,6 @@
 Solar flare will be on peak in mid of July 2025, beware from it. Its approaching fast
         </div>
     
-    <section class="section">
-      <h2>Celestial Bodies Data</h2>
-      <div class="collapsible-header" id="toggleButton" onclick="toggleContainer()">Show Celestial Bodies</div>
-      <div id="celestialContainer" class="collapsible-container collapsed">
-        <ul id="celestialBodies">
-          <li>Loading data...</li>
-        </ul>
-      </div>
-    </section>
     
     <section class="section">
       <div class="astro-event-block" id="astroEventBlock">
@@ -637,8 +628,54 @@ I applied for Job Pakistan (suparco), they reject me, then I apply in NASA and S
       <div class="card">
         <p>Email: <em>contact@urfrequency.site</em> (Service not available yet)</p>
       </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.7160164961047!2d74.32078580000001!3d31.5319588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190500656fcd43%3A0x1ed5f8ca4a901821!2sUR%20Frequency!5e0!3m2!1sen!2s!4v1737041347918!5m2!1sen!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="UR Frequency Location"></iframe>
-    </section>
+      <!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<!-- [Previous head content remains the same] -->
+<body>
+  <!-- [All previous content remains the same until the footer] -->
+  
+  <footer class="footer">
+    <div style="width: 100%; margin-bottom: 2rem;">
+      <div id="map" style="height: 300px; width: 100%; border-radius: 12px; border: 1px solid var(--nebula-green);"></div>
+    </div>
+    <p>© 2025 UR Frequency. All rights reserved.</p>
+    <p>Location: 30.3011377, 71.0542025</p>
+  </footer>
+
+  <!-- Add Leaflet CSS and JS (free and open source) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  <script>
+    // Initialize the map
+    function initMap() {
+      const map = L.map('map').setView([30.3011377, 71.0542025], 15);
+      
+      // Add OpenStreetMap tiles (free)
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      // Add your location marker
+      const marker = L.marker([30.3011377, 71.0542025]).addTo(map)
+        .bindPopup('UR Frequency,你的頻率,یو آر فریکوئنسی');
+      
+      // Open the popup by default
+      marker.openPopup();
+    }
+    
+    // Initialize the map when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      initMap();
+      // [Rest of your existing DOMContentLoaded code]
+    });
+  </script>
+</body>
+</html>
   </main>
   
   <footer class="footer">
