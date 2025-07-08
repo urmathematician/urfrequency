@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UR Frequency Team</title>
   <!-- Google Fonts for a modern look -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Global Styles */
     * {
@@ -17,31 +17,58 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #000428, #004e92);
-      color: #fff;
+      background-color: #000;
+      color: #0f0;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     a {
-      color: #f4a261;
+      color: #0f0;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     a:hover {
-      color: #ffba7a;
+      color: #7fff00;
+      text-shadow: 0 0 8px #0f0;
+    }
+
+    /* Space Background Animation */
+    .space-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle var(--duration) infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
 
     /* Header */
-.header {
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background-color:#333;
-      color: #fff;
+      background-color: rgba(0, 20, 0, 0.8);
+      color: #0f0;
       position: relative;
-      z-index: 3; /* Ensure header stays on top */
+      z-index: 3;
+      border-bottom: 1px solid #0f0;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
     }
 
     .logo {
@@ -50,6 +77,8 @@
       font-size: 24px;
       font-weight: bold;
       animation: slideIn 2s ease-out;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px #0f0;
     }
 
     .logo img {
@@ -57,62 +86,73 @@
       height: 40px;
       margin-right: 10px;
       animation: logoAnimation 2s ease-in-out;
+      filter: drop-shadow(0 0 5px #0f0);
     }
 
     .nav-menu {
       position: absolute;
-      top: 60px; /* Adjust based on header height */
+      top: 60px;
       left: 0;
-      background-color: #333;
+      background-color: rgba(0, 20, 0, 0.9);
       width: 100%;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease;
-      z-index: 3; /* Ensure the navigation menu appears above the container */
+      z-index: 3;
+      border-bottom: 1px solid #0f0;
     }
 
     .nav-menu ul {
       display: flex;
       list-style: none;
-      flex-direction: column; /* Stack items vertically */
+      flex-direction: column;
       padding: 10px 20px;
     }
 
     .nav-menu ul li {
-      margin: 10px 0; /* Space between items */
-      opacity: 0; /* Initially hidden */
-      transform: translateX(-100%); /* Start from left */
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateX(-100%);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .nav-menu.open {
-      max-height: 300px; /* Increased height for more items */
+      max-height: 300px;
     }
 
     .nav-menu.open ul li {
-      opacity: 1; /* Fade in */
-      transform: translateX(0); /* Slide in */
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .nav-menu ul li a {
-      color: white;
+      color: #0f0;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      display: block;
+      padding: 8px 0;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .nav-menu ul li a:hover {
-      color: #f4a261;
+      color: #7fff00;
+      text-shadow: 0 0 8px #0f0;
+      transform: translateX(10px);
     }
-
     
     .menu-icon {
-    display: block; /* Ensure it is block for smaller screens */
-    font-size: 30px;
-    cursor: pointer;
-    color: white; /* Make sure it's visible on a dark background */
-    z-index: 4; /* Ensure it's on top of other elements */
-}
+      display: block;
+      font-size: 30px;
+      cursor: pointer;
+      color: #0f0;
+      z-index: 4;
+      transition: all 0.3s;
+    }
 
+    .menu-icon:hover {
+      transform: rotate(90deg);
+      color: #7fff00;
+    }
 
     @keyframes slideIn {
       from {
@@ -128,23 +168,41 @@
     @keyframes logoAnimation {
       from {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.5) rotate(0deg);
       }
       to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) rotate(360deg);
       }
     }
+
     /* Main Content Styles */
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
+      position: relative;
     }
+
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px #0f0;
+    }
+
     h1 {
       text-align: center;
       margin: 20px 0;
       font-size: 2.5rem;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+      }
+      to {
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+      }
     }
 
     .container-text {
@@ -153,6 +211,11 @@
       text-align: justify;
       font-size: 1.1rem;
       line-height: 1.8;
+      background-color: rgba(0, 20, 0, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #0f0;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
     }
 
     .team-container {
@@ -163,16 +226,40 @@
     }
 
     .team-member {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 20, 0, 0.3);
       border-radius: 10px;
       text-align: center;
       padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s;
+      border: 1px solid #0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-member::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      background: linear-gradient(45deg, #0f0, #000, #0f0);
+      background-size: 200%;
+      border-radius: 10px;
+      animation: borderGlow 3s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .team-member:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 16px rgba(0, 255, 0, 0.4);
+      background: rgba(0, 30, 0, 0.5);
     }
 
     .team-member img {
@@ -180,28 +267,51 @@
       height: 120px;
       border-radius: 50%;
       margin-bottom: 15px;
-      border: 3px solid #fff;
+      border: 3px solid #0f0;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+      transition: all 0.3s;
+    }
+
+    .team-member:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
     }
 
     .team-member h3 {
       margin: 10px 0 5px;
       font-size: 1.2rem;
+      color: #7fff00;
     }
 
     .team-member p {
       font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     /* Footer */
     footer {
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 20, 0, 0.8);
       text-align: center;
       padding: 20px 10px;
       font-size: 0.9rem;
+      border-top: 1px solid #0f0;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+      margin-top: 40px;
     }
 
-    h3, p {
-      color: white;
+    footer p {
+      color: #0f0;
+      font-family: 'Orbitron', sans-serif;
     }
 
     /* Mobile responsive fix */
@@ -215,10 +325,17 @@
         max-height: none;
         display: block;
       }
+      
+      .team-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Space Background -->
+  <div class="space-bg" id="spaceBg"></div>
+
   <!-- Header -->
   <header class="header">
     <div class="logo">
@@ -240,8 +357,8 @@
 
   <!-- Main Content -->
   <main>
-    <section style="text-align: center;">
-      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo" style="height: 100px; margin: 20px auto;">
+    <section style="text-align: center;" class="floating">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo" style="height: 100px; margin: 20px auto; filter: drop-shadow(0 0 10px #0f0);">
       <h1>Team of UR Frequency</h1>
     </section>
     <section class="container-text">
@@ -256,7 +373,7 @@
           <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman">
           <h3>Ubaid UR Rehman</h3>
           <p>Owner, Scientist, Astronaut, Programmer, Researcher & Site Engineer</p>
-          <p>Email: <a href="mailto:ubaidurrehman@urfrequency.site">ubaidurrehman@urfrequency.site</a></p>
+          <p>Email: <a href="mailto:ubaidurrehman@urfrequency.site">urfrequency0@gmail.com</a></p>
         </div>
       </a>
       <a href="https://www.urfrequency.site/team/laiba">
@@ -272,7 +389,6 @@
           <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb">
           <h3>Haseeb</h3>
           <p>Chemistry Researcher, Astronaut</p>
-          <p>Email: <a href="mailto:haseebchemistry@urfrequency.site">haseebchemistry@urfrequency.site</a></p>
         </div>
       </a>
       <!-- Team Member 3 -->
@@ -280,8 +396,7 @@
         <div class="team-member">
           <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir">
           <h3>Muhammad Shaid Nazir, Astronaut</h3>
-          <p>Supervisor</p>
-          <p>Email: <a href="mailto:contect@urfrequency.site">contect@urfrequency.site</a></p>
+          <p>Team member</p>
         </div>
       </a>
       <!-- Team Member 4 -->
@@ -289,8 +404,7 @@
         <div class="team-member">
           <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman">
           <h3>Asad ur Rehman</h3>
-          <p>HR Manager, Astronaut</p>
-          <p>Email: <a href="mailto:hr@urfrequency.site">hr@urfrequency.site</a></p>
+          <p>Member</p>
         </div>
       </a>
     </section>
@@ -301,10 +415,61 @@
     <p>&copy; 2024 UR Frequency. All rights reserved.</p>
   </footer>
 
-  <!-- Script for Menu Toggle -->
+  <!-- Script for Menu Toggle and Space Background -->
   <script>
+    // Menu toggle
     document.querySelector('.menu-icon').addEventListener('click', function() {
       document.querySelector('.nav-menu').classList.toggle('open');
+      
+      // Animate menu items sequentially
+      const menuItems = document.querySelectorAll('.nav-menu ul li');
+      if (document.querySelector('.nav-menu').classList.contains('open')) {
+        menuItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+          }, index * 100);
+        });
+      } else {
+        menuItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateX(-100%)';
+        });
+      }
+    });
+
+    // Create starfield background
+    const spaceBg = document.getElementById('spaceBg');
+    const starCount = 200;
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      
+      // Random properties for each star
+      const size = Math.random() * 3;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const duration = 2 + Math.random() * 3;
+      
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${posX}%`;
+      star.style.top = `${posY}%`;
+      star.style.setProperty('--duration', `${duration}s`);
+      
+      spaceBg.appendChild(star);
+    }
+
+    // Add floating animation to team members on hover
+    const teamMembers = document.querySelectorAll('.team-member');
+    teamMembers.forEach(member => {
+      member.addEventListener('mouseenter', () => {
+        member.classList.add('floating');
+      });
+      member.addEventListener('mouseleave', () => {
+        member.classList.remove('floating');
+      });
     });
   </script>
 </body>
