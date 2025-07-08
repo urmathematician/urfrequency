@@ -182,6 +182,7 @@
       margin: 0 auto;
       padding: 20px;
       position: relative;
+      min-height: calc(100vh - 160px); /* Adjusted for footer */
     }
 
     h1, h2, h3 {
@@ -220,20 +221,26 @@
 
     .team-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       padding: 20px;
+      margin-bottom: 40px;
     }
 
     .team-member {
       background: rgba(0, 20, 0, 0.3);
       border-radius: 10px;
       text-align: center;
-      padding: 20px;
+      padding: 25px 20px;
       transition: all 0.3s;
       border: 1px solid #0f0;
       position: relative;
       overflow: hidden;
+      height: 100%; /* Ensure all boxes have same height */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .team-member::before {
@@ -263,10 +270,11 @@
     }
 
     .team-member img {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       border: 3px solid #0f0;
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
       transition: all 0.3s;
@@ -279,13 +287,30 @@
 
     .team-member h3 {
       margin: 10px 0 5px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #7fff00;
     }
 
     .team-member p {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #ccc;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .team-member a[href^="mailto"] {
+      display: inline-block;
+      margin-top: auto;
+      padding: 8px 15px;
+      background: rgba(0, 30, 0, 0.5);
+      border-radius: 5px;
+      border: 1px solid #0f0;
+      transition: all 0.3s;
+    }
+
+    .team-member a[href^="mailto"]:hover {
+      background: rgba(0, 50, 0, 0.7);
+      transform: scale(1.05);
     }
 
     /* Floating Animation */
@@ -306,7 +331,9 @@
       font-size: 0.9rem;
       border-top: 1px solid #0f0;
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-      margin-top: 40px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
     }
 
     footer p {
@@ -328,6 +355,34 @@
       
       .team-container {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .team-member {
+        padding: 20px 15px;
+      }
+      
+      .team-member img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .team-member {
+        padding: 15px 10px;
+      }
+      
+      .team-member h3 {
+        font-size: 1.1rem;
+      }
+      
+      .team-member p {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -381,6 +436,7 @@
           <img src="https://i.pinimg.com/736x/31/6d/80/316d80a7e6702c3df8ad7c3eab1fcfc8.jpg" alt="Laiba Ubaid">
           <h3>Laiba Momal</h3>
           <p>Researcher & Astronaut</p>
+          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
         </div>
       </a>
       <!-- Team Member 2 -->
@@ -389,6 +445,7 @@
           <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb">
           <h3>Haseeb</h3>
           <p>Chemistry Researcher, Astronaut</p>
+          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
         </div>
       </a>
       <!-- Team Member 3 -->
@@ -397,6 +454,7 @@
           <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir">
           <h3>Muhammad Shaid Nazir, Astronaut</h3>
           <p>Team member</p>
+          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
         </div>
       </a>
       <!-- Team Member 4 -->
@@ -405,6 +463,7 @@
           <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman">
           <h3>Asad ur Rehman</h3>
           <p>Member</p>
+          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
         </div>
       </a>
     </section>
