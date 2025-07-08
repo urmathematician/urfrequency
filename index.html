@@ -10,13 +10,13 @@
   <style>
     :root {
       /* Green/Black Theme */
-      --space-black: #0a0f0a; /* Darker green-black */
-      --nebula-green: #00ff88; /* Bright cyber green */
-      --matrix-green: #00cc66; /* Medium green */
-      --tech-cyan: #00ffff; /* Bright cyan accent */
-      --neon-green: #39ff14; /* Neon highlight */
-      --cosmic-text: #e0ffe0; /* Light greenish text */
-        --galaxy-pink: #ff00b4;
+      --space-black: #0a0f0a;
+      --nebula-green: #00ff88;
+      --matrix-green: #00cc66;
+      --tech-cyan: #00ffff;
+      --neon-green: #39ff14;
+      --cosmic-text: #e0ffe0;
+      --galaxy-pink: #ff00b4;
       --heading-font: 'Orbitron', sans-serif;
       --body-font: 'Space Mono', monospace;
       
@@ -29,6 +29,29 @@
           radial-gradient(circle at 80% 70%, rgba(0, 204, 102, 0.1) 0%, transparent 20%);
     }
 
+    /* Space Background Animation */
+    .space-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle var(--duration) infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
     [data-theme="dark"] {
       background-color: var(--space-black);
       background-image: var(--background-effect);
@@ -36,11 +59,11 @@
     }
 
     [data-theme="light"] {
-      background-color: #f4fff4; /* Very light green */
+      background-color: #f4fff4;
       color: #0a0f0a;
       --cosmic-text: #0a0f0a;
       --space-black: #f4fff4;
-      --nebula-green: #007744; /* Darker green for light mode */
+      --nebula-green: #007744;
       --matrix-green: #005533;
       --tech-cyan: #008888;
     }
@@ -53,6 +76,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
@@ -60,6 +84,22 @@
       color: var(--nebula-green);
       text-shadow: var(--text-glow);
       margin-top: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2.5rem;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+      }
+      to {
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+      }
     }
 
     header {
@@ -80,6 +120,18 @@
       align-items: center;
       border-radius: 8px;
       overflow: hidden;
+      animation: slideIn 2s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .logo img {
@@ -89,6 +141,18 @@
       width: 40px;
       height: 40px;
       object-fit: contain;
+      animation: logoAnimation 2s ease-in-out;
+    }
+
+    @keyframes logoAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+      }
     }
 
     .logo-text {
@@ -115,7 +179,7 @@
       background-color: rgba(0, 255, 128, 0.1);
       text-decoration: none;
       color: var(--tech-cyan);
-      transition: background-color 0.3s;
+      transition: all 0.3s;
       font-family: var(--body-font);
       border: 1px solid rgba(0, 255, 128, 0.3);
     }
@@ -123,6 +187,8 @@
     nav a:hover {
       background-color: rgba(0, 255, 128, 0.25);
       color: var(--neon-green);
+      transform: translateX(5px);
+      box-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
     }
 
     .mode-toggle {
@@ -237,11 +303,33 @@
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: var(--card-shadow);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s;
       border: 1px solid rgba(0, 255, 128, 0.1);
       backdrop-filter: blur(5px);
       color: var(--cosmic-text);
       text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      background: linear-gradient(45deg, #0f0, #000, #0f0);
+      background-size: 200%;
+      border-radius: 12px;
+      animation: borderGlow 3s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     [data-theme="light"] .card {
@@ -390,6 +478,7 @@
       padding: 2rem;
       background: rgba(0, 20, 10, 0.8);
       margin-top: auto;
+      border-top: 1px solid rgba(0, 255, 128, 0.2);
     }
 
     iframe {
@@ -422,6 +511,40 @@
       max-height: 1000px;
     }
 
+    .breaking-news {
+      position: relative;
+      padding: 15px;
+      background: rgba(255, 0, 180, 0.1);
+      border-left: 4px solid var(--galaxy-pink);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      font-family: var(--body-font);
+      color: var(--cosmic-text);
+    }
+
+    .breaking-news:before {
+      content: "BREAKING";
+      font-family: 'Orbitron', sans-serif;
+      background: var(--galaxy-pink);
+      color: black;
+      padding: 3px 10px;
+      margin-right: 15px;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -449,45 +572,23 @@
       .mission-vision > div {
         min-width: 100%;
       }
+      
+      .breaking-news {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .breaking-news:before {
+        margin-bottom: 8px;
+        margin-right: 0;
+      }
     }
-.breaking-news {
-  position: relative;
-  padding: 15px;
-  background: rgba(255, 0, 180, 0.1);
-  border-left: 4px solid var(--galaxy-pink);
-  margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  font-family: var(--body-font);
-  color: var(--cosmic-text);
-}
-
-.breaking-news:before {
-  content: "BREAKING";
-  font-family: 'Orbitron', sans-serif;
-  background: var(--galaxy-pink);
-  color: black;
-  padding: 3px 10px;
-  margin-right: 15px;
-  font-size: 0.9rem;
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .breaking-news {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .breaking-news:before {
-    margin-bottom: 8px;
-    margin-right: 0;
-  }
-}
   </style>
 </head>
 <body>
+  <!-- Space Background -->
+  <div class="space-bg" id="spaceBg"></div>
+
   <header>
     <div class="logo">
       <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo" />
@@ -503,7 +604,7 @@
 
   <main>
     <section class="hero">
-      <div class="hero-content">
+      <div class="hero-content floating">
         <h1>We Made Future</h1>
         <p>Explore the universe of innovation with us.</p>
         <div id="clock-container">
@@ -516,9 +617,8 @@
     </section>
     
     <div class="breaking-news">
-Solar flare will be on peak in mid of July 2025, beware from it. Its approaching fast
-        </div>
-    
+      Solar flare will be on peak in mid of July 2025, beware from it. Its approaching fast
+    </div>
     
     <section class="section">
       <div class="astro-event-block" id="astroEventBlock">
@@ -578,7 +678,7 @@ I applied for Job Pakistan (suparco), they reject me, then I apply in NASA and S
     <section class="section" id="services">
       <h2>Our Services</h2>
       <div class="card-grid">
-                  <a href="https://www.urfrequency.site/news" class="card">
+        <a href="https://www.urfrequency.site/news" class="card">
           <h3>Explore news</h3>
           <p>You'll see Space News (Our and all over world) Pakistani (PTV and Jang news), Turkey (TRT News ), Al-Jazeera (Qatar), and China News</p>
         </a>
@@ -628,11 +728,8 @@ I applied for Job Pakistan (suparco), they reject me, then I apply in NASA and S
       <div class="card">
         <p>Email: <em>contact@urfrequency.site</em> (Service not available yet)</p>
       </div>
-      <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<!-- [Previous head content remains the same] -->
-<body>
-  <!-- [All previous content remains the same until the footer] -->
+    </section>
+  </main>
   
   <footer class="footer">
     <div style="width: 100%; margin-bottom: 2rem;">
@@ -651,38 +748,29 @@ I applied for Job Pakistan (suparco), they reject me, then I apply in NASA and S
     crossorigin=""></script>
 
   <script>
-    // Initialize the map
-    function initMap() {
-      const map = L.map('map').setView([30.3011377, 71.0542025], 15);
-      
-      // Add OpenStreetMap tiles (free)
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      
-      // Add your location marker
-      const marker = L.marker([30.3011377, 71.0542025]).addTo(map)
-        .bindPopup('UR Frequency,你的頻率,یو آر فریکوئنسی');
-      
-      // Open the popup by default
-      marker.openPopup();
-    }
+    // Create starfield background
+    const spaceBg = document.getElementById('spaceBg');
+    const starCount = 200;
     
-    // Initialize the map when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      initMap();
-      // [Rest of your existing DOMContentLoaded code]
-    });
-  </script>
-</body>
-</html>
-  </main>
-  
-  <footer class="footer">
-    © 2025 UR Frequency. All rights reserved.
-  </footer>
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      
+      // Random properties for each star
+      const size = Math.random() * 3;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const duration = 2 + Math.random() * 3;
+      
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${posX}%`;
+      star.style.top = `${posY}%`;
+      star.style.setProperty('--duration', `${duration}s`);
+      
+      spaceBg.appendChild(star);
+    }
 
-  <script>
     // Update clock function
     function updateClock() {
       const now = new Date();
@@ -805,10 +893,28 @@ I applied for Job Pakistan (suparco), they reject me, then I apply in NASA and S
       }
     }
 
+    // Initialize the map
+    function initMap() {
+      const map = L.map('map').setView([30.3011377, 71.0542025], 15);
+      
+      // Add OpenStreetMap tiles (free)
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      // Add your location marker
+      const marker = L.marker([30.3011377, 71.0542025]).addTo(map)
+        .bindPopup('UR Frequency,你的頻率,یو آر فریکوئنسی');
+      
+      // Open the popup by default
+      marker.openPopup();
+    }
+
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
       updateClock();
       loadEventNews();
+      initMap();
       
       // Initialize celestial container as collapsed
       document.getElementById('celestialContainer').classList.add('collapsed');
