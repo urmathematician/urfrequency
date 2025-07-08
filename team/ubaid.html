@@ -1,1027 +1,517 @@
-
-
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="https://img.hotimg.com/1ef97f5ba533d7bd7.png" type="image/png">
-
     <title>About Myself Ubaid UR Rehman</title>
-
     <meta name="google-site-verification" content="azthnYNKg3HDplNjwJN9vymVU-P18dp3iyE3FNFKORc" />
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7905341714144701"
-
-     crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7905341714144701" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Space Theme Colors */
+            --space-black: #0a0f0a;
+            --nebula-green: #00ff88;
+            --matrix-green: #00cc66;
+            --tech-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --cosmic-text: #e0ffe0;
+            --galaxy-pink: #ff00b4;
+            --heading-font: 'Orbitron', sans-serif;
+            --body-font: 'Space Mono', monospace;
+            
+            --main-gradient: linear-gradient(90deg, var(--nebula-green), var(--tech-cyan));
+            --card-gradient: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            --text-glow: 0 0 10px rgba(0, 255, 128, 0.7);
+            --card-shadow: 0 15px 30px rgba(0, 255, 128, 0.2);
+            --background-effect: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 128, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(0, 204, 102, 0.1) 0%, transparent 20%);
+        }
 
-     .card-container {
+        /* Space Background Animation */
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        [data-theme="dark"] {
+            background-color: var(--space-black);
+            background-image: var(--background-effect);
+            color: var(--cosmic-text);
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--heading-font);
+            color: var(--nebula-green);
+            text-shadow: var(--text-glow);
+        }
+
+        h1 {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
+            to { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; }
+        }
+
+        .header {
+            background: linear-gradient(to right, #000000, var(--matrix-green));
+            color: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 255, 128, 0.2);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
             display: flex;
+            align-items: center;
+            animation: slideIn 2s ease-out;
+        }
 
-            flex-wrap: wrap;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-            justify-content: center;
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            animation: logoAnimation 2s ease-in-out;
+        }
 
+        @keyframes logoAnimation {
+            from { opacity: 0; transform: scale(0.5) rotate(0deg); }
+            to { opacity: 1; transform: scale(1) rotate(360deg); }
+        }
+
+        /* Main Content Styles */
+        .container {
+            background: rgba(10, 25, 15, 0.8);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
             padding: 20px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            max-width: 1200px;
+        }
 
+        .container img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.5);
+            margin: 0 auto 20px;
+            border: 3px solid var(--nebula-green);
+        }
+
+        .details {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+
+        /* Button Styles */
+        .email-button, .whatsapp, .Linkedin, .Youtube, .CV {
+            position: relative;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin: 10px 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-button { background: linear-gradient(90deg, #4CAF50, #45a049); }
+        .whatsapp { background: linear-gradient(90deg, #25D366, #128C7E); }
+        .Linkedin { background: linear-gradient(90deg, #0077B5, #00A0DC); }
+        .Youtube { background: linear-gradient(90deg, #FF0000, #CC0000); }
+        .CV { background: linear-gradient(90deg, #1E90FF, #0074D9); }
+
+        .Linkedin::before, .Youtube::before, .CV::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            top: 50%;
+            left: -25%;
+            transform: translateY(-50%) rotate(-30deg);
+            animation: slide 2s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .email-button:hover, .whatsapp:hover, 
+        .Linkedin:hover, .Youtube:hover, .CV:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 255, 128, 0.4);
+        }
+
+        /* Text Container */
+        .text-container {
+            background: rgba(10, 25, 15, 0.8);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .text-container p, .text-container h4 {
+            color: var(--cosmic-text);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        h2 {
+            background: linear-gradient(90deg, var(--matrix-green), var(--tech-cyan));
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 255, 128, 0.3);
+        }
+
+        h3 {
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        /* Card Container */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
         }
 
         .card {
-
+            background: rgba(15, 30, 20, 0.8);
+            border-radius: 12px;
+            padding: 15px;
+            width: 150px;
             text-align: center;
-
-            margin: 10px;
-
-            cursor: pointer;
-
-            transition: transform 0.3s;
-
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 255, 128, 0.2);
         }
 
         .card:hover {
-
             transform: scale(1.1);
-
+            box-shadow: 0 10px 25px rgba(0, 255, 128, 0.4);
         }
 
         .card img {
-
-            width: 100px;
-
-            height: 100px;
-
-            display: block;
-
-            margin: 0 auto;
-
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid var(--nebula-green);
         }
 
         .card p {
-
+            color: var(--cosmic-text);
+            font-size: 14px;
             margin: 10px 0 0;
-
-            font-size: 16px;
-
         }
 
-.container {
-
-    background: linear-gradient(15deg, #00FF7F, #1E90FF);
-
-
-    border-radius: 8px;
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
-    padding: 20px;
-
-    margin: 20px;
-
-    display: flex;
-
-    align-items: center;
-    overflow-y: auto;
-
-}
-
-        .container img {
-
-            max-width: 150px;
-
-            height: auto;
-
-             box-shadow: 0 5px 7px rgba(0,2000,012,0.9);
-
-            margin-right: 20px;
-            margin-top:-200px;
-
-        }
-
-
-        .container .details {
-
-            max-width: 600px;
-
-        }
-
-     /* Button Base Styles */
-
-.email-button, .whatsapp {    background: linear-gradient(90deg, #4CAF50, #45a049);
-
-    border: none;
-
-    border-radius: 8px; /* Slightly larger radius for a softer look */
-
-    color: white;
-
-    padding: 14px 28px; /* Increased padding for better touch area */
-margin: 10px;
-    font-size: 16px;
-
-    font-weight: bold; /* Make text bold for emphasis */
-
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Added shadow transition */
-
-    display: flex; /* Use flexbox to center icon and text */
-
-    align-items: center; /* Center items vertically */
-
-    justify-content: center; /* Center items horizontally */
-
-    text-decoration: none; /* Remove underline for anchor tags */
-
-}
-
-.Linkedin, .Youtube, .CV {
-    position: relative; /* Needed for positioning */
-    background: linear-gradient(90deg, #4CAF50, #45a049);
-    border: none;
-    border-radius: 8px; /* Slightly larger radius for a softer look */
-    color: white;
-    padding: 14px 28px; /* Increased padding for better touch area */
-    font-size: 16px;
-    font-weight: bold; /* Make text bold for emphasis */
-    display: flex; /* Use flexbox to center icon and text */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    text-decoration: none;
-    margin: 10px; /* Add some margin between buttons */
-    overflow: hidden; /* Hide the overflow */
-}
-.CV{
-
-    background:Blue;
-        }
-
-.Linkedin::before, .Youtube::before, .CV::before {
-    content: '';
-    position: absolute;
-    width: 150%; /* Extend width for inclination */
-    height: 4px; /* Thickness of the line */
-    background: rgba(255, 255, 255, 0.6); /* Transparent white line */
-    top: 50%; /* Center vertically */
-    left: -25%; /* Start from the left */
-    transform: translateY(-50%) rotate(-30deg); /* Inclined angle */
-    animation: slide 2s linear infinite; /* Animation for sliding effect */
-}
-
-@keyframes slide {
-    0% {
-        left: -100%; /* Start position */
-    }
-    100% {
-        left: 100%; /* End position */
-    }
-}
-
-
-
-.container-space {
-            margin-bottom: 100px;
-        }
-
-
-
-/* Adding Icon Styles */
-
-.email-button i, .whatsapp i, .Linkedin i, .Youtube i {
-
-    margin-right: 8px; /* Space between icon and text */
-
-}
-
-
-
-/* Hover Effects */
-
-.email-button:hover, .whatsapp:hover, .Linkedin:hover, .Youtube:hover {
-
-    background: linear-gradient(90deg, #45a049, #4CAF50);
-
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
-
-}
-
+        /* Popup Styles */
         .popup {
-
             display: none;
-
             position: fixed;
-
             left: 50%;
-
             top: 50%;
-
             transform: translate(-50%, -50%);
-
-            width: 80%;
-
-            height: 80%;
-
-            background: white;
-
-            border: 2px solid #ccc;
-
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
+            width: 90%;
+            height: 90%;
+            background: rgba(0, 20, 10, 0.95);
+            border: 2px solid var(--nebula-green);
+            box-shadow: 0 0 30px rgba(0, 255, 128, 0.5);
             z-index: 1000;
-
+            border-radius: 15px;
             overflow: hidden;
-
         }
 
         .popup iframe {
-
             width: 100%;
-
-            height: calc(100% - 30px);
-
+            height: calc(100% - 40px);
+            border: none;
         }
 
         .popup .close {
-
             position: absolute;
-
             top: 0;
-
             right: 0;
-
-            padding: 10px;
-
-            cursor: pointer;
-
-            background: #ccc;
-
+            padding: 10px 15px;
+            background: var(--matrix-green);
+            color: black;
             border: none;
-
             font-size: 20px;
-
+            cursor: pointer;
+            font-weight: bold;
         }
 
         .popup .close:hover {
-
-            background: #bbb;
-
+            background: var(--nebula-green);
         }
 
-        .button2, .button3 {
-
-            padding: 10px 20px;
-
+        .button2 {
+            background: rgba(0, 255, 128, 0.2);
+            border: 1px solid var(--nebula-green);
+            color: var(--cosmic-text);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
         }
 
-        * {
-
-      margin: 0;
-
-      padding: 0;
-
-      box-sizing: border-box;
-
-    }
-
-
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-    }
-
-
-
-    .header {
-
-    background-color: #1E1E1E;
-
-    color: #FFFFFF;
-
-    padding: 20px 40px;
-
-    border-bottom: 2px solid #4CAF50;
-
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-
-}
-
-
-
-
-
-    .logo {
-
-      display: flex;
-
-      align-items: center;
-
-      font-size: 24px;
-
-      font-weight: bold;
-
-      animation: slideIn 2s ease-out;
-
-    }
-
-
-
-    .logo img {
-
-      width: 40px;
-
-      height: 40px;
-
-      margin-right: 10px;
-
-      animation: logoAnimation 2s ease-in-out;
-
-    }
-
-
-
-    .nav-menu ul {
-
-      display: flex;
-
-      list-style: none;
-
-    }
-
-
-
-    .nav-menu ul li {
-
-      margin-left: 20px;
-
-    }
-
-
-
-    .nav-menu ul li a {
-
-      color: white;
-
-      text-decoration: none;
-
-      transition: color 0.3s;
-
-    }
-
-
-
-    .nav-menu ul li a:hover {
-
-      color: #f4a261;
-
-    }
-
-
-
-    .menu-icon {
-
-      display: none;
-
-      font-size: 30px;
-
-      cursor: pointer;
-
-    }
-
-
-
-    @keyframes slideIn {
-
-      from {
-
-        opacity: 0;
-
-        transform: translateY(-50%);
-
-      }
-
-      to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-      }
-
-    }
-
-
-
-    @keyframes logoAnimation {
-
-      from {
-
-        opacity: 0;
-
-        transform: scale(0.5);
-
-      }
-
-      to {
-
-        opacity: 1;
-
-        transform: scale(1);
-
-      }
-
-    }
-
-
-
-    /* Mobile view */
-
-    @media (max-width: 768px) {
-
-      .nav-menu ul {
-
-        display: none;
-
-        flex-direction: column;
-
-      }
-
-
-
-      .menu-icon {
-
-        display: block;
-
-      }
-
-    }
-
-         .text-container {
-
-            padding-left: 20px;
-
-            padding-right: 20px;
-
-            background-color: #ffffff; /* White background */
-
-            border-radius: 10px; /* Rounded corners */
-
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-
-            margin: 20px 0; /* Margin above and below */
-overflow-y: auto; /* Maximum width */
-
-            text-align: center; /* Center text */
-             width:100%;
-
+        .button2:hover {
+            background: rgba(0, 255, 128, 0.4);
+            transform: translateY(-3px);
         }
 
-
-
-        .text-container p {
-
-            color: #333; /* Dark text color */
-
-            font-size: 18px; /* Larger text size */
-
-            line-height: 1.6; /* Better line spacing */
- text-align: justify; 
-            margin: 10px 0; /* Margin for spacing between paragraphs */
-
+        .button2 img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
 
-                 h2 {
+        /* Footer */
+        .footer {
+            background: rgba(0, 20, 10, 0.8);
+            color: var(--cosmic-text);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 255, 128, 0.3);
+        }
 
-            background: linear-gradient(90deg, #4CAF50, #45a049); /* Gradient header */
-
-            color: white;
-
-            padding: 15px; /* Padding around the heading */
-
-            border-radius: 8px; /* Rounded corners */
-
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-
-            width: 100%; /* Full width */
-
-            text-align: center; /* Center the text */
-
-            margin-bottom: 20px; /* Space below the header */ 
-
-         }
-
-                     h3 {
-
-            background-color: red; /* Green header bar */
-
-            color: white;
-
-                                     padding: 10px;  
-
-                     }
-h4{
-     text-align: justify; 
-}
-  .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: auto; /* Push footer to the bottom */
-    }
-
-    .footer a {
-      color: #f4a261;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .container img {
+                margin-top: 0;
+            }
+            
+            .details {
+                padding: 20px 0;
+            }
+            
+            .popup {
+                width: 95%;
+                height: 80%;
+            }
+        }
     </style>
-
+</head>
 <body>
+    <!-- Space Background -->
+    <div class="space-bg" id="spaceBg"></div>
 
     <header class="header">
-
-    <div class="logo">
-
-      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR-Frequency-Old-Logo" />
-
-      Ubaid UR Rehman Personal
-
-    </div>
-
+        <div class="logo">
+            <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo">
+            Ubaid UR Rehman Personal
+        </div>
     </header>
 
-
-
-     <div class="container">
-
-        <img src="https://img.hotimg.com/uuuuuu.png" alt="MY Self.png" border="0" />
-
+    <div class="container">
+        <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman">
         <div class="details">
-
-<h1>Ubaid UR Rehman</h1>
-
-<p>Mechanical Engineer and Hobby as Space Engineer and also web and devolper</p>
-
- <a href="https://wa.me/923116522978" target="_blank" class="btn whatsapp">WhatsApp Me</a>
-
- 
-
- <a href="mailto:urubaid205@gmail.com" class="email-button">Email Me</a>
-
-<a href="https://www.linkedin.com/in/ubaid-ur-rehman-0bba01283/" target="_blank" class="btn Linkedin">Linkedin</a>
-
-
-
-
-
-  <a href=" https://www.youtube.com/@ur_frequency/" class="YouTube">Youtube </a>
-<div class="button-container">
-                    
-</div>
-
-
-</div>
-
-
-</div>
+            <h1>Ubaid UR Rehman</h1>
+            <p>Mechanical Engineer and Hobby as Space Engineer and also web developer</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <a href="https://wa.me/923116522978" target="_blank" class="whatsapp">WhatsApp Me</a>
+                <a href="mailto:urubaid205@gmail.com" class="email-button">Email Me</a>
+                <a href="https://www.linkedin.com/in/ubaid-ur-rehman-0bba01283/" target="_blank" class="Linkedin">LinkedIn</a>
+                <a href="https://www.youtube.com/@ur_frequency/" class="Youtube">YouTube</a>
+                <a href="#" class="CV">Download CV</a>
+            </div>
+        </div>
+    </div>
 
     <div class="text-container">
+        <h2>About (Ubaid UR Rehman):</h2>
+        <p>I am owner of UR Frequency and site engineer at Pak Power System, holding a Bachelor's degree in Mechanical Engineering from Khwaja Fareed University of Engineering & Information Technology. I am skilled in CAD software, ANSYS simulations and problem-solving. I am passionate about mechanical design, with hands-on experience in university projects. During my internships at Sheikhoo Steel, Pakistan, and Warbel (Pvt) Limited, Pakistan, I gained experience in G-Coding and measurements of machine parts.</p>
 
-<h2>About (Ubaid UR Rehman):</h2>
+        <h3>Education:</h3>
+        <p>I went to The Islamic School System Jahanian, where I completed primary education and passed 6th grade. After that, I attended Govt. Model High School Jahanian, where I passed 8th grade and completed my matriculation.</p>
+        <p>I then passed Intermediate (FSc Pre-Engineering) from Punjab College Jahanian</p>
+        <p>I completed my Bachelor's (BS-Mechanical Engineering) from Khwaja Fareed University of Engineering and Information Technology in 2024</p>
 
-<p>I am owner of UR Frequency and site engineer at Pak Power System, holding a Bachelor's degree in Mechanical Engineering from Khwaja Fareed University of Engineering & Information Technology . I am skilled in CAD software, ANSYS simulations and problem-solving. I am passionate about mechanical design, with hands-on experience in university projects. During my internships at Sheikhoo Steel, Pakistan, and Warbel (Pvt) Limited, Pakistan, I gained experience in G-Coding and measurements of machine parts.</p>
-
-<h3>Education:</h3>
-
-<p> I went to The Islamic School System Jahanian, where I completed primary education and passed 6th grade. After that, I attended Govt. Model High School Jahanian, where I passed 8th grade and completed my matriculation.</p>
-
-<p>I then passed Intermediate (FSc Pre-Engineering) from Punjab College Jahanian</p>
-
-<p>I completed my Bachelor's (BS-Mechanical Engineering) from Khwaja Fareed University of Engineering and Information Technology in 2024</p>
-
-<h3>Projects</h3>
-
-<button class="button2" onclick="openPopup('popup3')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/36/5f/2b/365f2b58c96ecaefd2e971290c45758a.jpg" style="width: 50px; height: auto;">
-
-        <span>Bluetooth Control Car Steering Prototype</span>
-
-    </div> 
-
-</button>
-
-
-
-<div class="popup" id="popup3">
-
-    <button class="close" onclick="closePopup('popup3')">×</button>
-
-    <div class="popup-content">
-
-        <iframe src="https://drive.google.com/file/d/1b8fJckmW8TZP3n8RqzlNk-M2K6GQCuyG/preview" frameborder="0" allowfullscreen></iframe>
-
-    </div>
-
-</div>
-
-<button class="button2" onclick="openPopup('popup4')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/f8/ab/5a/f8ab5a5ebfb0d25777211e71a7548efd.jpg" style="width: 50px; height: auto;">
-
-        <span>Computer</span>
-
-    </div> 
-
-</button>
-
-
-
-<div class="popup" id="popup4">
-
-    <button class="close" onclick="closePopup('popup4')">×</button>
-
-    <div class="popup-content">
-
-        <iframe src="https://drive.google.com/file/d/1KMSQqCDVqS_Ubz4Odz0KtAVxoYuKO7QM/preview" frameborder="0" allowfullscreen></iframe>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-<button class="button2" onclick="openPopup('popup9')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/33/5b/c8/335bc81075601e6a764fd738c072e61a.jpg" style="width: 50px; height: auto;">
-
-        <span>Node MCU WEb host</span>
-
-    </div> 
-
-</button>
-
-
-
-<div class="popup" id="popup9">
-
-    <button class="close" onclick="closePopup('popup9')">×</button>
-
-    <div class="popup-content">
-
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7246832911188979713" height="2188" width="504" frameborder="0" allowfullscreen="" title="Embedded post"</iframe>" frameborder="0" allowfullscreen></iframe>
-
-    </div>
-
-</div>
+        <h3>Projects</h3>
         
-
-
-
-
-
-
-<button class="button2" onclick="openPopup('popup10')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/33/5b/c8/335bc81075601e6a764fd738c072e61a.jpg" style="width: 50px; height: auto;">
-
-        <span>Node MCU WEb Wifi RADAR</span>
-
-    </div> 
-
-</button>
-
-
-
-<div class="popup" id="popup10">
-
-    <button class="close" onclick="closePopup('popup10')">×</button>
-
-    <div class="popup-content">
-
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7243682871620579330"</iframe>" frameborder="0" allowfullscreen></iframe>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
+        <!-- More project buttons and popups here -->
         
+        <h3>Space Projects</h3>
+        <p>With the great interest in space, I made many projects the websites like UR Frequency and UR Frequency celestial are are given in last of page. But I also made satellite using LoRa module. I can't use (iridium satellite module) because it is illegal in Pakistan. And I can't go against the law.</p>
+        <p>I'll upload the videos and pictures with manual of satellite. I can't use it for communication but it is used for capturing pictures and detecting objects using sensors.</p>
 
-
-
-
-
-
+        <h3>Experience:</h3>
+        <h4>Site Engineer at Pak Power System:</h4>
+        <p>(Repair and Maintenance) of Diesel Generators, Making Bills, Invoices, Managing shifts and Website (Hosting an C-Panel)</p>
         
-<!-- Button to open popup -->
-
-<button class="button2" onclick="openPopup('popup5')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/24/dc/75/24dc75a4cb7bf293f5220adc7fdcbad0.jpg" style="width: 50px; height: auto;">
-
-        <span>Mini Freezer</span>
-
-    </div> 
-
-</button>
-
-
-
-<!-- Popup content -->
-
-<div class="popup" id="popup5">
-
-    <button class="close" onclick="closePopup('popup5')">×</button>
-
-    <div class="popup-content">
-
-        <iframe src="https://drive.google.com/file/d/1ko2Y5k8BLLHCbm4EGGTkW6NZmCqDaHIA/preview" frameborder="0" allowfullscreen></iframe>
-
-    </div>
-
-</div>
-
-<button class="button2" onclick="openPopup('popup6')">
-
-    <div class="button-content">
-
-        <img src="https://i.pinimg.com/564x/25/49/15/25491596c4706b4d35ff9335c012b5de.jpg" style="width: 50px; height: auto;">
-
-        <span>Robotic ARM (Auto/mannual control)</span>
-
-    </div> 
-
-</button>
-
-
-
-<!-- Popup content -->
-
-<div class="popup" id="popup6">
-
-    <button class="close" onclick="closePopup('popup6')">×</button>
-
-<div class="popup-content">
-
-        <p>The video isn't avalible but I made it in 2022 and it has ability to control as well as automatic as well as mannual. The project is just simple we need 4 servos. And a card board. Connect servos with card board that makes shape of robotic arm, also before doing that you must have knowlage of enginering dynamics, statics and mechanics of materials. 1st cheak its loading limits and then perform other tasks using (FEA), after combining parts connect servos with Arduino or node MCU. If you want to control mannual use node mcu or (arduino with bluetooth or NRF). Then using Arduino IDE upload your code in Micro-controller and enjoy</p>
-
-    </div>
-
-</div>
-
-<p>more are comming</p>
-<h3> Space Projects</h3>
-<p>With the great 
-interest in space, I made many projects the websites like UR Frequency and UR Frequency celestial are are given in last of page. But I also made satellite using LoRa module. I can't use (iridium satellite module) because it is illegal in Pakistan. And I can't go againts the law. </p>
-<p>I'll upload the videos and pictures with mannual of satellite. I can't use it for communication but it is used for capturing pictures and detecting objects using sensors. </p>
-    <h3>Experiance:</h3>
-<h4>Site Engineer at Pak Power System:</h4>
-<p>(Repair and Maintenance) of Diesel Generators, Making Bills, Invoices, Managing shifts and Website
-(Hosting an C-Panel)</p>
-<h4>Internship at Sheikoo Steel:</h4>
-
-<p>Assembly of stands at the roll shop, where I used gauges to ensure that workers assembled the stands according to standard specifications. Creating G-codes for CNC machines and operating CNC equipment. Assisting as a trainee engineer in developing Excel sheets related to rolls and stands.</p>
-
-<h4>Internship Warbel (Pvt) limited:</h4>
-
-<p>I possess skills in production plant maintenance, including bearing and seal replacement. I actively participated in controlling and operating the plant, doing so efficiently.</p>
-
-<h3>Skills</h3>
-
-    <p>Programming Languages: Intermediate in Python and MATLAB.
-
-Simulations: Ansys (Mechanical, Fluent, and Heat Analysis).
-
-CAD: Proficient in CAD software.
-
-G-Coding (CNC): Experienced in CNC programming.
-
-Microcontroller Programming: Arduino and Raspberry Pi.
-
-PLC Programming: Beginner-level knowledge in Ladder Logic (Mitsubishi).
-
-Web Development: HTML coding, website hosting using Ubuntu Linux.
-
-Welding: Skilled in welding mechanical parts.
-
-Microsoft Office: Proficient in MS Office applications.
-
-Additional Skills: Photo and video editing, virtual machines, graphics creation on Unreal Engine, and server management.
-
-</p>
-
-<h3>Software Expertise</h3>
-
-<p>Operating Systems: Windows (XP, 10, 11), Mac (High Sierra, Mojave, Catalina, Sonoma), Linux (Mint, Ubuntu, Ubuntu Server)
-
-</p>
-
-<p>Drafting Tools: AutoCAD, SolidWorks</p>
-
-
-
-
-<p>Document Tools: MS Office, iWork</p>
-
-<p>Graphics Tools: Unreal Engine 4.2.1</p>
-
-<p>Microcontroller Programming: Arduino IDE</p>
-
-<p>Simulation Tools: Ansys (Products)</p>
-
-
-
-  
-
-<p>CNC and PLC Tools: Fusion 360, MasterCAM, CNC-Simulator,LD-Micro, PLC Simulators.
-
-</p>
-
-<p>Coding Tools: PyCharm.
-
-</p>
-
-<p>Math Solving: MATLAB, Mathematica</p>
-
-<p>Photo and Video Editing: Filmora-9, Adobe Lightroom, iMovie</p>
-
-<p>Web Hosting: Ubuntu Server, GitHub</p>
-
- <button class="button2" onclick="openPopup('popup1')">
-
-        <img src="https://i.pinimg.com/564x/fa/b1/ee/fab1ee1d321b37b6fadfd4dc37a60e04.jpg" style="width: 50px; height: auto;">
-
-        <p>Solid Works certificate</p> 
-
-    </button>
-
-
-
-    <div class="popup" id="popup1">
-
-        <button class="close" onclick="closePopup('popup1')">×</button>
-
-        <iframe src="https://drive.google.com/file/d/1wHM8vl1ZoO3FLUDyRlxlSfoQ_zsPJ20t/preview" frameborder="0"></iframe>
-
-        
-
-    </div>
-
-  <button class="button3" onclick="openPopup('popup2')">
-
-        <img src="https://i.pinimg.com/564x/34/00/b8/3400b8a36bff2eac6304fb074433e11b.jpg" style="width: 100px; height: 50px;">
-
-        <p>Ansys Certificate</p> 
-
-    </button>
-
-
-
-    <div class="popup" id="popup2">
-
-        <button class="close" onclick="closePopup('popup2')">×</button>
-
-        <iframe src="https://drive.google.com/file/d/1ni9g-ytGrpg6PKQ6JPsBCs1rMRWiaYil/preview" frameborder="0"></iframe>
-
-    </div>
-
-
-    <div class="container-space"></div>
-<h2>My Web Pages</h2>
-
- <div class="card-container">
-
-        <div class="card" onclick="window.open('https://urmathematician.github.io/ur_frequency/', '_blank')">
-
-            <img src="https://img.hotimg.com/Space-logo.png" alt="Space-logo.png" alt="UR-Frequency-Old-Logo" alt="Icon 1">
-
-            <p>UR Frequency</p>
-
+        <h4>Internship at Sheikoo Steel:</h4>
+        <p>Assembly of stands at the roll shop, where I used gauges to ensure that workers assembled the stands according to standard specifications. Creating G-codes for CNC machines and operating CNC equipment. Assisting as a trainee engineer in developing Excel sheets related to rolls and stands.</p>
+
+        <h4>Internship Warbel (Pvt) limited:</h4>
+        <p>I possess skills in production plant maintenance, including bearing and seal replacement. I actively participated in controlling and operating the plant, doing so efficiently.</p>
+
+        <h3>Skills</h3>
+        <p>Programming Languages: Intermediate in Python and MATLAB.</p>
+        <p>Simulations: Ansys (Mechanical, Fluent, and Heat Analysis).</p>
+        <p>CAD: Proficient in CAD software.</p>
+        <p>G-Coding (CNC): Experienced in CNC programming.</p>
+        <p>Microcontroller Programming: Arduino and Raspberry Pi.</p>
+        <p>PLC Programming: Beginner-level knowledge in Ladder Logic (Mitsubishi).</p>
+        <p>Web Development: HTML coding, website hosting using Ubuntu Linux.</p>
+        <p>Welding: Skilled in welding mechanical parts.</p>
+        <p>Microsoft Office: Proficient in MS Office applications.</p>
+        <p>Additional Skills: Photo and video editing, virtual machines, graphics creation on Unreal Engine, and server management.</p>
+
+        <h3>Software Expertise</h3>
+        <p>Operating Systems: Windows (XP, 10, 11), Mac (High Sierra, Mojave, Catalina, Sonoma), Linux (Mint, Ubuntu, Ubuntu Server)</p>
+        <p>Drafting Tools: AutoCAD, SolidWorks</p>
+        <p>Document Tools: MS Office, iWork</p>
+        <p>Graphics Tools: Unreal Engine 4.2.1</p>
+        <p>Microcontroller Programming: Arduino IDE</p>
+        <p>Simulation Tools: Ansys (Products)</p>
+        <p>CNC and PLC Tools: Fusion 360, MasterCAM, CNC-Simulator, LD-Micro, PLC Simulators.</p>
+        <p>Coding Tools: PyCharm.</p>
+        <p>Math Solving: MATLAB, Mathematica</p>
+        <p>Photo and Video Editing: Filmora-9, Adobe Lightroom, iMovie</p>
+        <p>Web Hosting: Ubuntu Server, GitHub</p>
+
+        <!-- Certificate buttons and popups here -->
+
+        <h2>My Web Pages</h2>
+        <div class="card-container">
+            <div class="card" onclick="window.open('https://urmathematician.github.io/ur_frequency/', '_blank')">
+                <img src="https://img.hotimg.com/Space-logo.png" alt="UR Frequency">
+                <p>UR Frequency</p>
+            </div>
+
+            <div class="card" onclick="window.open('https://urmathematician.github.io/urfrequency_celestial/', '_blank')">
+                <img src="https://i.pinimg.com/564x/3c/d4/f6/3cd4f6370b37481c6d996b6c1b53c07a.jpg" alt="Celestial Data">
+                <p>Celestial Data</p>
+            </div>
+
+            <div class="card" onclick="window.open('https://urmathematician.github.io/urstore/', '_blank')">
+                <img src="https://i.pinimg.com/564x/c4/e3/59/c4e3595d852cc9c9a123161a4eb80a5a.jpg" alt="UR App Store">
+                <p>UR App Store</p>
+            </div>
+
+            <div class="card" onclick="window.open('https://urmathematician.github.io/urtv/', '_blank')">
+                <img src="https://i.pinimg.com/736x/11/07/dc/1107dcb96326f62483b718b0354c966e.jpg" alt="UR Animations">
+                <p>UR Animations</p>
+            </div>
         </div>
+    </div>
 
+    <footer class="footer">
+        <p>&copy; 2024 UR Frequency. All rights reserved.</p>
+        <p>This is my personal data - you can view this website as my CV</p>
+    </footer>
 
-
-        <div class="card" onclick="window.open('https://urmathematician.github.io/urfrequency_celestial/', '_blank')">
-
-            <img src="https://i.pinimg.com/564x/3c/d4/f6/3cd4f6370b37481c6d996b6c1b53c07a.jpg" alt="Icon 2">
-
-            <p>Celestial Data</p>
-
-        </div>
-
-
-
-        <div class="card" onclick="window.open('https://urmathematician.github.io/urstore/', '_blank')">
-
-            <img src="https://i.pinimg.com/564x/c4/e3/59/c4e3595d852cc9c9a123161a4eb80a5a.jpg" alt="Icon 3">
-
-            <p>UR app Store</p>
-
-        </div>
-
-
-
-        <div class="card" onclick="window.open('https://urmathematician.github.io/urtv/', '_blank')">
-
-            <img src="https://i.pinimg.com/736x/11/07/dc/1107dcb96326f62483b718b0354c966e.jpg" alt="Icon 4">
-
-            <p>UR Animations</p>
-
-   </div>
-   </div>   </div>   </div>
-</body>
-
-<script> 
-
-    document.querySelector('.menu-icon').addEventListener('click', () => {
-
-      const navMenu = document.querySelector('.nav-menu ul');
-
-      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-
-    });
-
- function openPopup(id) {
-
-            document.getElementById(id).style.display = 'block';
-
+    <script>
+        // Create starfield background
+        const spaceBg = document.getElementById('spaceBg');
+        const starCount = 200;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const size = Math.random() * 3;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const duration = 2 + Math.random() * 3;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${posX}%`;
+            star.style.top = `${posY}%`;
+            star.style.setProperty('--duration', `${duration}s`);
+            
+            spaceBg.appendChild(star);
         }
 
-
+        function openPopup(id) {
+            document.getElementById(id).style.display = 'block';
+        }
 
         function closePopup(id) {
-
             document.getElementById(id).style.display = 'none';
-
         }
 
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            var coll = document.getElementsByClassName("collapsible");
-
-            for (var i = 0; i < coll.length; i++) {
-
-                coll[i].addEventListener("click", function() {
-
-                    this.classList.toggle("active");
-
-                    var content = this.nextElementSibling;
-
-                    if (content.style.display === "block") {
-
-                        content.style.display = "none";
-
-                    } else {
-
-                        content.style.display = "block";
-
-                    }
-
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-
-            }
-
+            });
         });
-
-
-
-</script>
-      <footer class="footer">
-    <p>&copy; 2024 UR Frequency. All rights reserved.</p>
-    <p>Its my personal data you can see this website as my CV</p>
-    </p>
-  </footer>
+    </script>
+</body>
 </html>
