@@ -2,39 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="https://img.hotimg.com/1ef97f5ba533d7bd7.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UR Frequency Team</title>
-  <!-- Google Fonts for a modern look -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://img.hotimg.com/1ef97f5ba533d7bd7.png" type="image/png">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Global Styles */
+    :root {
+      --primary: #000000;
+      --secondary: #0a0a0a;
+      --accent: #00ff00;
+      --accent-light: #7fff00;
+      --text: #e0e0e0;
+      --text-secondary: #a0a0a0;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #000;
-      color: #0f0;
-      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
       overflow-x: hidden;
     }
-
-    a {
-      color: #0f0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    a:hover {
-      color: #7fff00;
-      text-shadow: 0 0 8px #0f0;
-    }
-
-    /* Space Background Animation */
+    
+    /* Space Background */
     .space-bg {
       position: fixed;
       top: 0;
@@ -42,208 +41,185 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
       overflow: hidden;
     }
-
+    
     .star {
       position: absolute;
-      background-color: #fff;
+      background: #fff;
       border-radius: 50%;
       animation: twinkle var(--duration) infinite ease-in-out;
     }
-
+    
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; }
       50% { opacity: 1; }
     }
-
+    
     /* Header */
-    .header {
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1.5rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--accent);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background-color: rgba(0, 20, 0, 0.8);
-      color: #0f0;
-      position: relative;
-      z-index: 3;
-      border-bottom: 1px solid #0f0;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+      max-width: 1200px;
+      margin: 0 auto;
     }
-
+    
     .logo {
       display: flex;
       align-items: center;
-      font-size: 24px;
-      font-weight: bold;
-      animation: slideIn 2s ease-out;
       font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 10px #0f0;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
     }
-
+    
     .logo img {
-      width: 40px;
       height: 40px;
       margin-right: 10px;
-      animation: logoAnimation 2s ease-in-out;
-      filter: drop-shadow(0 0 5px #0f0);
+      filter: drop-shadow(0 0 5px var(--accent));
     }
-
+    
     .nav-menu {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background-color: rgba(0, 20, 0, 0.9);
-      width: 100%;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-      z-index: 3;
-      border-bottom: 1px solid #0f0;
+      display: flex;
     }
-
+    
     .nav-menu ul {
       display: flex;
       list-style: none;
-      flex-direction: column;
-      padding: 10px 20px;
     }
-
-    .nav-menu ul li {
-      margin: 10px 0;
-      opacity: 0;
-      transform: translateX(-100%);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    
+    .nav-menu li {
+      margin-left: 2rem;
     }
-
-    .nav-menu.open {
-      max-height: 300px;
-    }
-
-    .nav-menu.open ul li {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .nav-menu ul li a {
-      color: #0f0;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: block;
-      padding: 8px 0;
+    
+    .nav-menu a {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      padding: 0.5rem 0;
+      position: relative;
       font-family: 'Orbitron', sans-serif;
     }
-
-    .nav-menu ul li a:hover {
-      color: #7fff00;
-      text-shadow: 0 0 8px #0f0;
-      transform: translateX(10px);
+    
+    .nav-menu a::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px var(--accent);
+    }
+    
+    .nav-menu a:hover::before {
+      width: 100%;
+    }
+    
+    .nav-menu a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
     }
     
     .menu-icon {
-      display: block;
-      font-size: 30px;
+      display: none;
+      font-size: 1.5rem;
       cursor: pointer;
-      color: #0f0;
-      z-index: 4;
-      transition: all 0.3s;
+      color: var(--accent);
     }
-
-    .menu-icon:hover {
-      transform: rotate(90deg);
-      color: #7fff00;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-50%);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes logoAnimation {
-      from {
-        opacity: 0;
-        transform: scale(0.5) rotate(0deg);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) rotate(360deg);
-      }
-    }
-
-    /* Main Content Styles */
+    
+    /* Main Content */
     main {
+      margin-top: 80px;
+      padding: 4rem 5%;
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      position: relative;
-      min-height: calc(100vh - 160px); /* Adjusted for footer */
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    h1, h2, h3 {
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 10px #0f0;
-    }
-
-    h1 {
+    
+    .hero {
       text-align: center;
-      margin: 20px 0;
+      margin-bottom: 4rem;
+    }
+    
+    .hero img {
+      height: 120px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 10px var(--accent));
+    }
+    
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
       animation: glow 2s infinite alternate;
     }
-
+    
     @keyframes glow {
       from {
-        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+        text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
       }
       to {
-        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+        text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent);
       }
     }
-
-    .container-text {
+    
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--text-secondary);
+    }
+    
+    .team-intro {
       max-width: 800px;
-      margin: 20px auto;
-      text-align: justify;
-      font-size: 1.1rem;
-      line-height: 1.8;
+      margin: 0 auto 3rem;
+      text-align: center;
+      color: var(--text-secondary);
       background-color: rgba(0, 20, 0, 0.2);
       padding: 20px;
       border-radius: 10px;
-      border: 1px solid #0f0;
+      border: 1px solid var(--accent);
       box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
     }
-
-    .team-container {
+    
+    .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 20px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
-
-    .team-member {
-      background: rgba(0, 20, 0, 0.3);
+    
+    .team-card {
+      background: rgba(0, 20, 0, 0.2);
       border-radius: 10px;
-      text-align: center;
-      padding: 25px 20px;
-      transition: all 0.3s;
-      border: 1px solid #0f0;
-      position: relative;
       overflow: hidden;
-      height: 100%; /* Ensure all boxes have same height */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
     }
-
-    .team-member::before {
+    
+    .team-card::before {
       content: '';
       position: absolute;
       top: -2px;
@@ -251,252 +227,320 @@
       right: -2px;
       bottom: -2px;
       z-index: -1;
-      background: linear-gradient(45deg, #0f0, #000, #0f0);
+      background: linear-gradient(45deg, var(--accent), #000, var(--accent));
       background-size: 200%;
       border-radius: 10px;
       animation: borderGlow 3s linear infinite;
+      opacity: 0.7;
     }
-
+    
     @keyframes borderGlow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    .team-member:hover {
+    
+    .team-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 255, 0, 0.4);
-      background: rgba(0, 30, 0, 0.5);
+      background: rgba(0, 30, 0, 0.3);
     }
-
-    .team-member img {
-      width: 150px;
-      height: 150px;
+    
+    .team-card:hover::before {
+      opacity: 1;
+    }
+    
+    .team-img {
+      width: 100%;
+      height: 300px;
       object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      border: 3px solid #0f0;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-      transition: all 0.3s;
+      border-bottom: 1px solid var(--accent);
     }
-
-    .team-member:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    
+    .team-info {
+      padding: 1.5rem;
     }
-
-    .team-member h3 {
-      margin: 10px 0 5px;
+    
+    .team-info h3 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.3rem;
-      color: #7fff00;
+      margin-bottom: 0.5rem;
+      color: var(--accent-light);
     }
-
-    .team-member p {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 15px;
-      line-height: 1.5;
+    
+    .team-info p.position {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
     }
-
-    .team-member a[href^="mailto"] {
-      display: inline-block;
-      margin-top: auto;
-      padding: 8px 15px;
-      background: rgba(0, 30, 0, 0.5);
-      border-radius: 5px;
-      border: 1px solid #0f0;
-      transition: all 0.3s;
+    
+    .team-info p.bio {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
     }
-
-    .team-member a[href^="mailto"]:hover {
-      background: rgba(0, 50, 0, 0.7);
-      transform: scale(1.05);
+    
+    .team-contact {
+      display: flex;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
     }
-
-    /* Floating Animation */
-    .floating {
-      animation: floating 3s ease-in-out infinite;
+    
+    .team-contact i {
+      margin-right: 8px;
+      color: var(--accent);
     }
-
-    @keyframes floating {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
+    
     /* Footer */
     footer {
-      background: rgba(0, 20, 0, 0.8);
+      background-color: rgba(0, 20, 0, 0.8);
+      padding: 2rem 5%;
       text-align: center;
-      padding: 20px 10px;
-      font-size: 0.9rem;
-      border-top: 1px solid #0f0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--accent);
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-      position: relative;
-      bottom: 0;
-      width: 100%;
     }
-
-    footer p {
-      color: #0f0;
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: var(--text);
+      margin: 0 1rem;
+      font-size: 0.9rem;
       font-family: 'Orbitron', sans-serif;
     }
-
-    /* Mobile responsive fix */
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
+    }
+    
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    /* Responsive */
     @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        border-bottom: 1px solid var(--accent);
+      }
+      
+      .nav-menu.active {
+        transform: translateY(0);
+      }
+      
+      .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .nav-menu li {
+        margin: 0;
+        text-align: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+      }
+      
       .menu-icon {
         display: block;
       }
-
-      .nav-menu {
-        position: static;
-        max-height: none;
-        display: block;
-      }
       
-      .team-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .team-member {
-        padding: 20px 15px;
-      }
-      
-      .team-member img {
-        width: 120px;
-        height: 120px;
-      }
-      
-      h1 {
+      .hero h1 {
         font-size: 2rem;
       }
     }
     
     @media (max-width: 480px) {
-      .team-member {
-        padding: 15px 10px;
+      .team-grid {
+        grid-template-columns: 1fr;
       }
       
-      .team-member h3 {
-        font-size: 1.1rem;
-      }
-      
-      .team-member p {
-        font-size: 0.9rem;
+      .hero h1 {
+        font-size: 1.8rem;
       }
     }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .team-card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    
+    .team-card:nth-child(1) { animation-delay: 0.1s; }
+    .team-card:nth-child(2) { animation-delay: 0.2s; }
+    .team-card:nth-child(3) { animation-delay: 0.3s; }
+    .team-card:nth-child(4) { animation-delay: 0.4s; }
+    .team-card:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
   <!-- Space Background -->
   <div class="space-bg" id="spaceBg"></div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">
-      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo">
-      UR Frequency
+  <header>
+    <div class="header-container">
+      <a href="https://www.urfrequency.site" class="logo">
+        <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo">
+        UR Frequency
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="https://www.urfrequency.site">Home</a></li>
+          <li><a href="https://www.urfrequency.site/carriers">Careers</a></li>
+          <li><a href="https://www.urfrequency.site/deg">Education</a></li>
+          <li><a href="https://www.urfrequency.site/sat">Satellite Comms</a></li>
+          <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
+          <li><a href="https://www.urfrequency.site/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-icon" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="https://www.urfrequency.site">Home</a></li>
-        <li><a href="https://www.urfrequency.site/carriers">Internships and Careers</a></li>
-        <li><a href="https://www.urfrequency.site/deg">Online degree and Certificates</a></li>
-        <li><a href="https://www.urfrequency.site/sat">UR Satellite Communications</a></li>
-        <li><a href="https://www.urfrequency.site/team">Our Team</a></li>
-        <li><a href="https://www.urfrequency.site/contact">Contact Us</a></li>
-      </ul>
-    </nav>
-    <div class="menu-icon">&#9776;</div>
   </header>
 
-  <!-- Main Content -->
   <main>
-    <section style="text-align: center;" class="floating">
-      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo" style="height: 100px; margin: 20px auto; filter: drop-shadow(0 0 10px #0f0);">
-      <h1>Team of UR Frequency</h1>
+    <section class="hero">
+      <img src="https://img.hotimg.com/UR-Frequency-Old-Logo.png" alt="UR Frequency Logo">
+      <h1>Meet Our Team</h1>
+      <p>Dedicated professionals advancing the frontiers of space research and technology</p>
     </section>
-    <section class="container-text">
-      <p>
-        At UR Frequency, our team is a passionate group of innovators dedicated to advancing the frontiers of space research and technology. With expertise spanning satellite design, communication systems, and orbital mechanics, we collaborate to create cutting-edge solutions for modern space exploration. Driven by curiosity and a commitment to excellence, we strive to turn ambitious ideas into groundbreaking realities, shaping the future of space science.
-      </p>
+    
+    <section class="team-intro">
+      <p>At UR Frequency, our team combines diverse expertise in satellite design, communication systems, and orbital mechanics to create innovative solutions for modern space exploration. We're driven by curiosity and committed to turning ambitious ideas into groundbreaking realities.</p>
     </section>
-    <section class="team-container">
+    
+    <div class="team-grid">
       <!-- Team Member 1 -->
-      <a href="https://www.urfrequency.site/team/ubaid">
-        <div class="team-member">
-          <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman">
+      <a href="https://www.urfrequency.site/team/ubaid" class="team-card">
+        <img src="https://img.hotimg.com/uuuuuu.png" alt="Ubaid UR Rehman" class="team-img">
+        <div class="team-info">
           <h3>Ubaid UR Rehman</h3>
-          <p>Owner, Scientist, Astronaut, Programmer, Researcher & Site Engineer</p>
-          <p>Email: <a href="mailto:ubaidurrehman@urfrequency.site">urfrequency0@gmail.com</a></p>
+          <p class="position">Founder & Lead Scientist</p>
+          <p class="bio">Expertise in satellite systems, programming, and space research with a passion for advancing space technology.</p>
+          <div class="team-contact">
+            <i class="fas fa-envelope"></i>
+            <span>urfrequency0@gmail.com</span>
+          </div>
         </div>
       </a>
-      <a href="https://www.urfrequency.site/team/laiba">
-        <div class="team-member">
-          <img src="https://i.pinimg.com/736x/31/6d/80/316d80a7e6702c3df8ad7c3eab1fcfc8.jpg" alt="Laiba Ubaid">
-          <h3>Laiba Momal</h3>
-          <p>Researcher & Astronaut</p>
-          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
-        </div>
-      </a>
+      
       <!-- Team Member 2 -->
-      <a href="https://www.urfrequency.site/team/chemist">
-        <div class="team-member">
-          <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb">
-          <h3>Haseeb</h3>
-          <p>Chemistry Researcher, Astronaut</p>
-          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
+      <a href="https://www.urfrequency.site/team/laiba" class="team-card">
+        <img src="https://i.pinimg.com/736x/31/6d/80/316d80a7e6702c3df8ad7c3eab1fcfc8.jpg" alt="Laiba Momal" class="team-img">
+        <div class="team-info">
+          <h3>Laiba Momal</h3>
+          <p class="position">Research Scientist</p>
+          <p class="bio">Specializing in astronautics and space research with a focus on innovative space exploration methodologies.</p>
+          <div class="team-contact">
+            <i class="fas fa-envelope"></i>
+            <span>contact@urfrequency.site</span>
+          </div>
         </div>
       </a>
+      
       <!-- Team Member 3 -->
-      <a href="https://www.urfrequency.site/team/supervisor">
-        <div class="team-member">
-          <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir">
-          <h3>Muhammad Shaid Nazir, Astronaut</h3>
-          <p>Team member</p>
-          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
+      <a href="https://www.urfrequency.site/team/chemist" class="team-card">
+        <img src="https://img.hotimg.com/Screen-Shot-2025-02-17-at-1.40.35-AM.png" alt="Haseeb" class="team-img">
+        <div class="team-info">
+          <h3>Haseeb</h3>
+          <p class="position">Chemistry Researcher</p>
+          <p class="bio">Focusing on material sciences for space applications and astronaut life support systems.</p>
+          <div class="team-contact">
+            <i class="fas fa-envelope"></i>
+            <span>contact@urfrequency.site</span>
+          </div>
         </div>
       </a>
+      
       <!-- Team Member 4 -->
-      <a href="https://www.urfrequency.site/team/hr">
-        <div class="team-member">
-          <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman">
-          <h3>Asad ur Rehman</h3>
-          <p>Member</p>
-          <p>Email: <a href="mailto:contact@urfrequency.site">contact@urfrequency.site</a></p>
+      <a href="https://www.urfrequency.site/team/supervisor" class="team-card">
+        <img src="https://img.hotimg.com/image0170cabfdf837250.png" alt="Muhammad Shaid Nazir" class="team-img">
+        <div class="team-info">
+          <h3>Muhammad Shaid Nazir</h3>
+          <p class="position">Operations Specialist</p>
+          <p class="bio">Ensuring seamless mission operations and astronaut training programs.</p>
+          <div class="team-contact">
+            <i class="fas fa-envelope"></i>
+            <span>contact@urfrequency.site</span>
+          </div>
         </div>
       </a>
-    </section>
+      
+      <!-- Team Member 5 -->
+      <a href="https://www.urfrequency.site/team/hr" class="team-card">
+        <img src="https://img.hotimg.com/BeautyPlus_20180901111346_fast.jpeg" alt="Asad ur Rehman" class="team-img">
+        <div class="team-info">
+          <h3>Asad ur Rehman</h3>
+          <p class="position">Technical Specialist</p>
+          <p class="bio">Supporting technical operations and system integrations for space missions.</p>
+          <div class="team-contact">
+            <i class="fas fa-envelope"></i>
+            <span>contact@urfrequency.site</span>
+          </div>
+        </div>
+      </a>
+    </div>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 UR Frequency. All rights reserved.</p>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://www.urfrequency.site/privacy">Privacy Policy</a>
+        <a href="https://www.urfrequency.site/terms">Terms of Service</a>
+        <a href="https://www.urfrequency.site/contact">Contact Us</a>
+      </div>
+      <p class="copyright">&copy; 2024 UR Frequency. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- Script for Menu Toggle and Space Background -->
   <script>
-    // Menu toggle
-    document.querySelector('.menu-icon').addEventListener('click', function() {
-      document.querySelector('.nav-menu').classList.toggle('open');
-      
-      // Animate menu items sequentially
-      const menuItems = document.querySelectorAll('.nav-menu ul li');
-      if (document.querySelector('.nav-menu').classList.contains('open')) {
-        menuItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-          }, index * 100);
-        });
-      } else {
-        menuItems.forEach((item, index) => {
-          item.style.opacity = '0';
-          item.style.transform = 'translateX(-100%)';
-        });
-      }
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.innerHTML = navMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
-
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
     // Create starfield background
     const spaceBg = document.getElementById('spaceBg');
     const starCount = 200;
@@ -519,17 +563,6 @@
       
       spaceBg.appendChild(star);
     }
-
-    // Add floating animation to team members on hover
-    const teamMembers = document.querySelectorAll('.team-member');
-    teamMembers.forEach(member => {
-      member.addEventListener('mouseenter', () => {
-        member.classList.add('floating');
-      });
-      member.addEventListener('mouseleave', () => {
-        member.classList.remove('floating');
-      });
-    });
   </script>
 </body>
 </html>
